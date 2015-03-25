@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
+  # devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  root 'static_pages#index'
+
+  # devise_scope :users do
+  #   get '/users' => 'users#index'
+  # end
+
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords'}
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

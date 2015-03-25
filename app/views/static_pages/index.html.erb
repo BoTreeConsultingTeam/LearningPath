@@ -1,0 +1,12 @@
+<% if current_user %>
+    Hello
+    <% @users.inspect %>
+    <% @users.each do |user| %>
+        <%= user.name %>
+    <% end %>
+
+    <%= link_to 'edit_detail', edit_user_registration_path(@current_user) %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+    <%= link_to 'Log in', new_user_session_path %>
+<% end %>
