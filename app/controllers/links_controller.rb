@@ -2,7 +2,12 @@ class LinksController < ApplicationController
   before_filter :assign_link, only: [:update, :destroy, :edit]
 
   def index
-    @links = Link.all
+    if params[:tag]
+      @tag = ActsAsTaggableOn::Tag.find_by_name(params[:tag])
+      @links = Link.tagged_with(params[:tag])
+    else
+      @links = Link.all
+    end
   end
 
   def new
@@ -41,7 +46,7 @@ class LinksController < ApplicationController
 
   private
     def link_params
-      params.require(:link).permit(:title, :url, :status, :description, :category)
+      params.require(:link).permit(:title, :url, :status, :description, :category, :tag_list)
     end
 
     def assign_link

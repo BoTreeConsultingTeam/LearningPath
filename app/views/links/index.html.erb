@@ -15,6 +15,11 @@
       <div >
         <%= link.description%>
       </div>
+      <div >
+        <% link.tags.each do |tag|%>
+          <%= link_to tag.name, links_path(tag: tag.name) %>
+        <% end%>
+      </div>
       <div>
         Created <%= time_ago_in_words(link.created_at) %> Ago.
       </div>
