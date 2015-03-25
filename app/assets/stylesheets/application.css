@@ -12,7 +12,10 @@
  *
  *= require bootstrap.min
  *= require font-awesome
+ *= require chosen
  *= require custom
- *= require_tree .
+ *= require style
+ *= require style-responsive
+
  *= require_self
  */
