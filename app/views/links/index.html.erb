@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div>
+      <h2>Saved Links <h2>
+    </div>
+    <% @links.each do |link| %>
+      <div style="border-bottom: 1px solid black">
+      <div style="font-size: 30px; ">
+        <div class="material">
+          <i class="fa fa-file fa-0.5x" ></i> </div>
+          <%= link_to "#{link.title}", link.url, html: { target: "_blank"}%>
+          <div style="font-size: 15px; float:right"><%= link_to 'Edit', edit_link_path(link)%>|<%= link_to 'Delete', link_path(link), method: 'delete', data: { confirm: 'Are you sure? Do you want to delete?'} %></div>
+      </div>
+      <div >
+        <%= link.description%>
+      </div>
+      <div>
+        Created <%= time_ago_in_words(link.created_at) %> Ago.
+      </div>
+    </div>
+      <% end%>
+  </div>
+  <div class="col-md-3">
+    <div class='col-md-4'><%= button_to 'New', new_link_path, method: 'get', class: 'btn-sm btn-success form-control'%></div>
+  </div>
+</div>

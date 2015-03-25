@@ -1,0 +1,25 @@
+
+.material{
+    float: left;
+    padding-right:10px;
+}
+<!-- helpers for Vertical Spacing -->
+.spacer5 { height: 5px; }
+.spacer10 { height: 10px; }
+.spacer15 { height: 15px; }
+.spacer20 { height: 20px; }
+.spacer25 { height: 25px; }
+.spacer30 { height: 30px; }
+.spacer35 { height: 35px; }
+.spacer40 { height: 40px; }
+.spacer45 { height: 45px; }
+.spacer50 { height: 50px; }
+.spacer65 { height: 65px; }
+.spacer70 { height: 70px; }
+.spacer75 { height: 75px; }
+.spacer100 { height: 100px; }
+.spacer200 { height: 200px; }
+
+.spacer-width {
+    width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block;
+}
