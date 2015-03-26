@@ -10,15 +10,12 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require bootstrap.min
  *= require font-awesome
+ *= require chosen
  *= require custom
  *= require style
  *= require style-responsive
- *= require_tree .
  *= require_self
  */
-
-body{
-background-color: #eeeeee;
-}
+@import "bootstrap-sprockets";
+@import "bootstrap";

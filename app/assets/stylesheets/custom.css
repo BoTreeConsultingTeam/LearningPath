@@ -24,6 +24,38 @@
     width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block;
 }
 
+.footer{
+    height: 20px;
+    width: 40px;
+    min-height: 20px;
+    min-width: 40px;
+    position: absolute;
+    opacity: 0.85;
+    z-index: 8675309;
+    display: none;
+    cursor: pointer;
+}
+.site-footer{
+    position: fixed;
+    height: 40px;
+    bottom: 0px;
+    width: 100%;
+    background-color: #ff5555 !important;
+}
+
+body{
+    background-color: #eeeeee !important;
+}
+
+.black-bg{
+    background-color: #ff7777 !important;
+}
+.logout{
+    background-color: #ff5555 !important;
+}
+a:hover{
+    text-decoration: none !important;
+}
 .form-login h2.form-login-heading {
     background-color: #ff7777 !important;
 }
