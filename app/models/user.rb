@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :current_password
-
-
+  has_many :favourites
+  has_many :links
 end

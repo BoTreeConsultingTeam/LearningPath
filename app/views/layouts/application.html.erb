@@ -7,13 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body id="">
-  <%= render 'layouts/header' if current_user %>
+  <%= render 'layouts/header' %>
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>"><%= value %></div>
   <% end %>
-  <section id=<%='main-content' if current_user %>>
+  <section id='main-content'>
     <%= yield %>
   </section>
-  <%= render 'layouts/footer' if current_user %>
+  <%= render 'layouts/footer' %>
 </body>
 </html>
