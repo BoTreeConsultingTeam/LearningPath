@@ -1,0 +1,19 @@
+<h1>Links Tagged as <%= @tag.name %></h1>
+
+<% if @links.count > 0 %>
+
+  <ul>
+
+    <% @links.each do |link| %>
+
+      <li><%= link_to link.title, link_path(link) %></li>
+
+    <% end %>
+
+  </ul>
+
+<% else %>
+
+  <p>This tag is not associated with any games.</p>
+
+<% end %>
