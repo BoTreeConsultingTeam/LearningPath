@@ -2,7 +2,8 @@
   <%= link_to 'LearningPath', links_path, class: 'logo' %>
   <div class="top-menu">
     <ul class="nav pull-right top-menu">
-      <li><a class="logout" href="http://www.blacktie.co/demo/dashgumfree/login.html">Logout</a></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout' %></li>
+      <li><%= link_to 'Profile', edit_user_registration_path(@current_user), class: 'logout' %></li>
     </ul>
   </div>
 </header>

@@ -6,14 +6,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body id="container">
-  <%= render 'layouts/header' %>
+<body id="">
+  <%= render 'layouts/header' if current_user %>
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>"><%= value %></div>
   <% end %>
-  <section id="main-content">
+  <section id=<%='main-content' if current_user %>>
     <%= yield %>
   </section>
-  <%= render 'layouts/footer' %>
+  <%= render 'layouts/footer' if current_user %>
 </body>
 </html>

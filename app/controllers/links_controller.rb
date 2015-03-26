@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :assign_link, only: [:update, :destroy, :edit]
   before_filter :all_tags, only: [ :edit, :new ]
   def index

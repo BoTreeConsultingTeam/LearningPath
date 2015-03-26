@@ -37,8 +37,9 @@
 }
 .site-footer{
     position: fixed;
+    height: 40px;
     bottom: 0px;
-    width: inherit;
+    width: 100%;
     background-color: #ff5555 !important;
 }
 
