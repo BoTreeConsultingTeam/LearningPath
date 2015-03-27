@@ -1,0 +1,14 @@
+<section class="wrapper">
+  <div class="row mt">
+    <div class="col-lg-1 col-md-1 ">
+      <%= link_to 'All', links_path, 'data-no-turbolink' => true %>
+      <%= link_to 'Favourites', favourite_links_path, 'data-no-turbolink' => true %>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 links" id="links-list">
+     <%= render partial: 'links/links_list', locals: { links: @links}%>
+  </div><!--/ row -->
+    <%= will_paginate @links %>
+    </div>
+</section>
+
+

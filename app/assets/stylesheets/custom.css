@@ -1,0 +1,79 @@
+
+.material{
+    float: left;
+    padding-right:10px;
+}
+<!-- helpers for Vertical Spacing -->
+.spacer5 { height: 5px; }
+.spacer10 { height: 10px; }
+.spacer15 { height: 15px; }
+.spacer20 { height: 20px; }
+.spacer25 { height: 25px; }
+.spacer30 { height: 30px; }
+.spacer35 { height: 35px; }
+.spacer40 { height: 40px; }
+.spacer45 { height: 45px; }
+.spacer50 { height: 50px; }
+.spacer65 { height: 65px; }
+.spacer70 { height: 70px; }
+.spacer75 { height: 75px; }
+.spacer100 { height: 100px; }
+.spacer200 { height: 200px; }
+
+.spacer-width {
+    width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block;
+}
+
+.footer{
+    height: 20px;
+    width: 40px;
+    min-height: 20px;
+    min-width: 40px;
+    position: absolute;
+    opacity: 0.85;
+    z-index: 8675309;
+    display: none;
+    cursor: pointer;
+}
+.site-footer{
+    position: fixed;
+    height: 40px;
+    bottom: 0px;
+    width: 100%;
+    background-color: #ff5555 !important;
+}
+
+body{
+    background-color: #eeeeee !important;
+}
+
+.black-bg{
+    background-color: #ff7777 !important;
+}
+.logout{
+    background-color: #ff5555 !important;
+}
+a:hover{
+    text-decoration: none !important;
+}
+.form-login h2.form-login-heading {
+    background-color: #ff7777 !important;
+}
+
+.btn-theme:hover, .btn-theme:focus, .btn-theme:active {
+    background-color: #ff5050 !important;
+    border-color: #ff8080 !important;
+    border-bottom: 1px solid #ff8080;
+    border-right: 1px solid #ff8080;
+}
+
+.btn-theme{
+    background-color: #ff6060 !important;
+    border-top: 4px solid #ff4040;
+    border-left: 4px solid #ff4040;
+    /*border-color: #ff4545 !important;*/
+
+}
+#tomato {
+    color: #ff7777;
+}
