@@ -1,10 +1,10 @@
 <header class="header black-bg">
-  <%= link_to 'LearningPath', links_path, class: 'logo' %>
+  <%= link_to 'Learning Path', links_path, class: 'logo' %>
   <div class="top-menu">
     <ul class="nav pull-right top-menu">
       <% if current_user %>
-        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout' %></li>
         <li><%= link_to 'Profile', edit_user_registration_path(@current_user), class: 'logout' %></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout' %></li>
       <% end %>
     </ul>
   </div>
