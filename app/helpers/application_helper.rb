@@ -7,13 +7,13 @@ module ApplicationHelper
     category = link.category
     case category
       when 'Video'
-        "fa-video-camera"
+        "fa fa-video-camera"
       when 'Podcast'
-        "fa-volume-up"
+        "fa fa-volume-up"
       when 'BlogPost'
-        "fa-bold"
+        "fa fa-bold"
       else
-        "fa-file-text"
+        "fa fa-file-text"
       end
   end
 

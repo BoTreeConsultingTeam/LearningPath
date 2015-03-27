@@ -17,5 +17,6 @@
 //= require bootstrap
 //= require chosen.proto
 //= require chosen.jquery
+//= require links
 //= require_tree .
 

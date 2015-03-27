@@ -4,34 +4,11 @@
       <%= link_to 'All', links_path %>
       <%= link_to 'Favourites', favourite_links_path %>
     </div>
-    <div class="col-lg-8 col-md-8 col-sm-12">
-    <% @links.each do |link| %>
-      <div class="showback" >
-        <div class="left fa"><i title= "<%= set_tool_tip(link) %>" class=<%= "#{set_category_icon(link)}" %>></i><br/>11</div><p>
-        <%= link_to "#{link.title}", link.url, html: { target: "_blank"}%></p>
-        <span>
-          <i id="fav_<%=link.id %>">
-            <%= render :partial => 'favourite_btn', :locals => {link: link} %>
-          </i>
-          <%= link_to edit_link_path(link) do%>
-            <i class="fa fa-edit" style="text-decoration: none"></i>
-          <%end%>
-          <%= link_to link_path(link), method: 'delete', data: { confirm: 'Are you sure? Do you want to delete?'} do%>
-            <i class="fa fa-trash-o" ></i>
-          <%end%>
-          <i class="fa fa-eye"></i>
-        </span>
-        <div class="description">
-          <%= link.description%>
-        </div><br/>
-        <div class="tag">
-          <% link.tags.each do |tag| %>
-            <%= link_to tag.name, links_path(tag: tag.name), class: "btn btn-sm btn-theme" %>
-          <% end %>
-        </div>
-      </div><!-- /showback -->
-    <% end %>
-  </div><!--/ row -->
-</section><!-- --/wrapper ---->
+    <div class="col-lg-8 col-md-8 col-sm-12 links">
+     <%= render partial: 'links/links_list', locals: { links: @links}%>
+    </div><!--/ row -->
+    <%= will_paginate @links %>
+    </div>
+</section>
 
 

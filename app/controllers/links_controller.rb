@@ -5,9 +5,9 @@ class LinksController < ApplicationController
   def index
     if params[:tag]
       @tag = ActsAsTaggableOn::Tag.find_by_name(params[:tag])
-      @links = Link.tagged_with(params[:tag])
+      @links = Link.tagged_with(params[:tag]).paginate(:page => params[:page])
     else
-      @links = current_user.links
+      @links = current_user.links.paginate(:page => params[:page])
     end
   end
 
@@ -46,7 +46,7 @@ class LinksController < ApplicationController
   end
 
   def favourites
-    @links = current_user.links.where(favourite: true)
+    @links = current_user.links.where(favourite: true).paginate(:page => params[:page])
     render 'links/index'
   end
 
