@@ -6,25 +6,23 @@ class ChartsController < ApplicationController
   def chart_by_learn
 
     data_table = GoogleVisualr::DataTable.new
-    data_table.new_column('number', 'D')
+    data_table.new_column('date', 'Day')
     data_table.new_column('number', 'Learn_Count')
     data_table.new_column('number', 'Add_Count')
-    # data_table.add_rows(5)
 
-    @chart_by_learn = LearnTime.report_of_lern_time(current_user.id, @date)
-    @count = @chart_by_learn.values.map {|v| v.size}.max
-    @total_links = Links.
-    data_array = Array.new
+    @chart_by_learn = LearnTime.report_of_learn_time(current_user.id, @date)
+    @total_links = User.get_all_link(current_user, @date)
 
-    @chart_by_learn.to_a.reverse.each_with_index do |data, index|
-      data_array << [data.first.day, data.last.count]
-      # data_table.set_cell(index, 0, data.first.day)
-      # data_table.set_cell(index, 1, data.last.count)
+    all = ((Date.today-30)..Date.today).inject([]) do |all, date |
+      learn_count = @chart_by_learn[date] || 0
+      link_count = @total_links[date] || 0
+
+      all << [date, learn_count, link_count ]
     end
-    data_table.add_rows(data_array)
-    opts   = { :width => 400, :height => 240, :title => 'Learning Growth', :legend => 'bottom' }
-    @chart = GoogleVisualr::Interactive::LineChart.new(data_table, opts)
 
+    data_table.add_rows(all)
+    opts   = { :width => 500, :height => 440, :title => 'Learning Growth', :legend => 'bottom' }
+    @chart = GoogleVisualr::Interactive::LineChart.new(data_table, opts)
   end
 
   def chart_by_tag

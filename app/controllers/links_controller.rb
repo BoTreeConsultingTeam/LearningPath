@@ -7,7 +7,7 @@ class LinksController < ApplicationController
       @tag = ActsAsTaggableOn::Tag.find_by_name(params[:tag])
       @links = Link.tagged_with(params[:tag])
     else
-      @links = Link.all
+      @links = current_user.links
     end
   end
 
@@ -16,7 +16,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params)
+    @link = Link.new(link_params.merge({ user_id: current_user.id }))
     if @link.save
       redirect_to links_path
     else
@@ -45,9 +45,14 @@ class LinksController < ApplicationController
     end
   end
 
+  def favourites
+    @links = current_user.links.where(favourite: true)
+    render 'links/index'
+  end
+
   private
     def link_params
-      params.require(:link).permit(:title, :url, :status, :description, :category, :tag_list => [])
+      params.require(:link).permit(:title, :url, :status, :description, :category, :user_id, :tag_list => [])
     end
 
     def assign_link

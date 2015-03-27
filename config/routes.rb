@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   root 'links#index'
+  get 'links/favourites' => 'links#favourites', :as => :favourite_links
   resources :links
   resources :tag
+  resources :favourites
 
   get 'learn_time/create/:link_id' => 'learn_time#create', as: :learn_time
 
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
   # devise_scope :users do
   #   get '/users' => 'users#index'
   # end
-
+  post 'links/toggle' => 'favourites#toggle', :as => :toggle_favourite
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords'}
 
   # You can have the root of your site routed with "root"

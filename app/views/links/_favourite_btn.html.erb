@@ -1,0 +1,3 @@
+<%= link_to toggle_favourite_path(id: link.id), method: 'post', remote: true do%>
+  <i class="fa fa-heart" id=<%= 'tomato' if is_favourite_link?(link)  %> ></i>
+<%end%>
