@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
 
   attr_accessor :current_password
 
+  has_many :learn_time
 
 end

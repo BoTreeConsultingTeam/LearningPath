@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root 'links#index'
   resources :links
   resources :tag
+
+  get 'learn_time/create/:link_id' => 'learn_time#create', as: :learn_time
+
+  get 'charts/chart_by_learn(/:days)' => 'charts#chart_by_learn', as: :chart_by_learn
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
