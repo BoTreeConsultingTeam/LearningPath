@@ -16,7 +16,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params.merge({ user_id: current_user.id }))
+    @link = Link.new(link_params.merge({ user_id: current_user.id }).except!(:tag_list))
     current_user.tag(@link, :with => link_params[:tag_list], :on => :tags)
 
     if @link.save

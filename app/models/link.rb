@@ -1,9 +1,8 @@
 class Link < ActiveRecord::Base
   self.per_page = 20
   acts_as_taggable
-  validates :title, :status, :category, :url, :tag_list, presence: true
-  validates :url, format: { with: URI::regexp(%w(http https))
-  }
+  validates :title, :status, :category, :url, presence: true
+  validates :url, format: { with: URI::regexp(%w(http https)) }
   has_many :favourites
   belongs_to :user
   has_many :learn_time
