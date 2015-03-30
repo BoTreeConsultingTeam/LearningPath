@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jsapi
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require bootstrap
@@ -19,4 +20,3 @@
 //= require chosen.jquery
 //= require links
 //= require_tree .
-

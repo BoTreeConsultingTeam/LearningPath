@@ -8,6 +8,7 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
+  <%= render 'layouts/left_sidebar' if current_user %>
   <%= render 'shared/flash'%>
   <section id='main-content'>
     <%= yield %>

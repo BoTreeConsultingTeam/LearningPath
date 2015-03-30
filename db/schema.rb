@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20150326134450) do
 
   add_index "favourites", ["user_id", "link_id"], name: "favourites_index", unique: true, using: :btree
 
+  create_table "learn_times", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "link_id"
+  end
+
   create_table "links", force: true do |t|
     t.string   "title"
     t.string   "url"

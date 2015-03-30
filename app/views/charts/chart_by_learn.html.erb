@@ -1,0 +1,22 @@
+<section class="wrapper">
+  <h3><i class="fa fa-angle-right"></i> Report Charts</h3>
+  <div class="col-lg-6 col-md-6 ">
+    <div class="content-panel">
+      <h4><i class="fa fa-angle-right"></i> Learning Path</h4>
+      <div class="panel-body">
+        <div id='hero-graph' class="graph" ></div>
+        <%= render_chart(@chart, 'hero-graph') %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-6 ">
+    <div class="content-panel">
+      <h4><i class="fa fa-angle-right"></i> Learning Path</h4>
+      <div class="panel-body">
+        <div id='tag_chart' class="graph"></div>
+        <%= render_chart(@tag_chart, 'tag_chart') %>
+      </div>
+    </div>
+  </div>
+</section>

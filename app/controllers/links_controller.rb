@@ -16,7 +16,9 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params.merge({ user_id: current_user.id }))
+    @link = Link.new(link_params.merge({ user_id: current_user.id }).except!(:tag_list))
+    current_user.tag(@link, :with => link_params[:tag_list], :on => :tags)
+
     if @link.save
       redirect_to links_path
       flash[:success] = "You have created it successfully"
@@ -30,9 +32,11 @@ class LinksController < ApplicationController
   end
 
   def update
-    if @link.update(link_params)
-    flash[:success] = 'Successfully Updated!!'
-    redirect_to links_path
+    if @link.present?
+      @link.update(link_params.merge({user_id: current_user.id}).except!(:tag_list))
+      current_user.tag(@link, :with => link_params[:tag_list], :on => :tags)
+      flash[:success] = 'Successfully Updated!!'
+      redirect_to links_path
     else
       flash.now[:danger] = @link.errors.full_messages
       render 'edit'

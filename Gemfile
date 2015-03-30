@@ -7,6 +7,7 @@ gem 'rails', '4.1.8'
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'acts-as-taggable-on'
+gem 'google_visualr'
 gem 'will_paginate'
 gem 'pry'
 # Use SCSS for stylesheets
