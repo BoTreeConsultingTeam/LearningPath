@@ -78,6 +78,12 @@ a:hover{
     color: #ff7777;
 }
 
+.no_links_msg{
+margin-left:20%;
+margin-top: 10%;
+font-size: 20px
+}
+
 .black-bg {
     border-bottom: 0px solid #ccc !important;
 }
