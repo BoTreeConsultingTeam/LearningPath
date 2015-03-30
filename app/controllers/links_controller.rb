@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
   before_filter :authenticate_user!
   before_filter :assign_link, only: [:update, :destroy, :edit]
-  before_filter :all_tags, only: [ :edit, :new ]
+  before_filter :all_tags, only: [ :edit, :new, :update ]
   def index
     selected_tag = params[:tag]
     if selected_tag
@@ -19,8 +19,9 @@ class LinksController < ApplicationController
     @link = Link.new(link_params.merge({ user_id: current_user.id }))
     if @link.save
       redirect_to links_path
+      flash.now[:success] = "You have created it successfully"
     else
-      flash[:error] = "Something went wrong"
+      flash[:danger] = @link.errors.full_messages
       redirect_to new_link_path
     end
   end
@@ -29,18 +30,18 @@ class LinksController < ApplicationController
   end
 
   def update
-    if @link.update_attributes(link_params)
-    flash[:success] = 'Successfully Updated!!'
+    if @link.update(link_params)
+    flash.now[:success] = 'Successfully Updated!!'
     redirect_to links_path
     else
-      flash[:error] = 'Error'
+      flash.now[:danger] = @link.errors.full_messages
       render 'edit'
     end
   end
 
   def destroy
     if @link.destroy
-      flash[:success] = "Link Removed Successfully"
+      flash.now[:success] = "Link Removed Successfully"
       redirect_to links_path
     end
   end
