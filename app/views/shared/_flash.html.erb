@@ -4,10 +4,14 @@
       <a href="#" class="close" data-dismiss="alert">&times;</a>
       <div class="text-center alert alert-<%= name %>">
         <ul>
-        <% message.each do |msg| %>
-        <li> <%= msg %> </li>
-          <% end %>
-          </ul>
+          <% if message.is_a?Array%>
+            <% message.each do |msg| %>
+            <li> <%= msg %> </li>
+            <% end %>
+          <% else %>
+           <li> <%= message%></li>
+          <% end%>
+        </ul>
       </div>
     <% end %>
   </div>

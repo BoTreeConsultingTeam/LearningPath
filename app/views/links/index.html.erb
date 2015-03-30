@@ -3,7 +3,6 @@
     <% if @links.blank? %>
       <div class="no_links_msg">You do not have anything to display at this time. <%= link_to 'Start saving one now!', new_link_path%></div>
     <% else %>
-      <%= render 'links/left_sidebar' %>
       <div class="col-lg-8 col-md-8 col-sm-12 links" id="links-list">
         <%= render partial: 'links/links_list', locals: { links: @links}%>
       </div>
