@@ -52,8 +52,8 @@ a, a:hover, a:focus {
 }
 
 .btn-round {
-	border-radius: 20px;
-	-webkit-border-radius: 20px;
+	border-radius: 20px !important;
+	-webkit-border-radius: 20px !important;
 }
 
 .accordion-heading .accordion-toggle {
@@ -2239,7 +2239,7 @@ label {
     min-height: 900px;
 }
 .showback p{
-	font-size: 2em;
+	font-size: 1.6em;
 	padding-top: 0px;
 	width: 550px;
 	margin-left: 3px;

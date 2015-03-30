@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :links
   resources :tag
   resources :favourites
+
+  get 'learn_time/create/:link_id' => 'learn_time#create', as: :learn_time
+
+  get 'charts/chart_by_learn(/:days)' => 'charts#chart_by_learn', as: :chart_by_learn
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,7 +17,6 @@ Rails.application.routes.draw do
   # end
   post 'links/toggle' => 'favourites#toggle', :as => :toggle_favourite
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords'}
-
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

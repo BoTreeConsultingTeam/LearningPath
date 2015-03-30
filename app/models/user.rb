@@ -4,7 +4,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  acts_as_tagger
+  
   attr_accessor :current_password
   has_many :favourites
   has_many :links
+  has_many :learn_time
+
+  def self.get_all_link(user, date)
+    user.links.where("created_at >= ?", date).group('date(created_at)').count
+  end
 end
