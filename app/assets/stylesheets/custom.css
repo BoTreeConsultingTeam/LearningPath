@@ -77,3 +77,7 @@ a:hover{
 #tomato {
     color: #ff7777;
 }
+
+.black-bg {
+    border-bottom: 0px solid #ccc !important;
+}

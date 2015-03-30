@@ -17,6 +17,8 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params.merge({ user_id: current_user.id }))
+    current_user.tag(@link, :with => link_params[:tag_list], :on => :tags)
+
     if @link.save
       redirect_to links_path
     else

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  acts_as_tagger
+  
   attr_accessor :current_password
   has_many :favourites
   has_many :links

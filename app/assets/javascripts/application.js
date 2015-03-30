@@ -18,5 +18,6 @@
 //= require bootstrap
 //= require chosen.proto
 //= require chosen.jquery
+//= require Chart
+//= require links
 //= require_tree .
-
