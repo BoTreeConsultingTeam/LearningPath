@@ -6,7 +6,7 @@ module LinksHelper
   end
 
   def set_category_icon(link)
-    category = link.category
+    category = link.link_type.name
     case category
       when 'Video'
         "fa fa-video-camera"
@@ -20,8 +20,8 @@ module LinksHelper
   end
 
   def set_tool_tip(link)
-    category = link.category
-    case category
+    link_type = link.link_type.name
+    case link_type
       when 'Video'
         'Click here if you watched it again'
       when 'Podcast'
