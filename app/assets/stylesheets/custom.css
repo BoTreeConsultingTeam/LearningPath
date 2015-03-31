@@ -96,3 +96,11 @@ font-size: 20px
     background-color: #f2dede !important;
 }
 
+.stick_to_left{
+    margin-left: -15px !important
+}
+
+.stick_to_right{
+    margin-right: -15px !important;
+    margin-left: 30px; !important
+}

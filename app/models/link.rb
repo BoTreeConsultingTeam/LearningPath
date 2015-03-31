@@ -1,11 +1,15 @@
 class Link < ActiveRecord::Base
   self.per_page = 20
   acts_as_taggable
-  validates :title, :status, :category, :url, presence: true
+  validates :title, :learning_status_id, :category_id, :url, presence: true
   validates :url, format: { with: URI::regexp(%w(http https)) }
   has_many :favourites
   belongs_to :user
   has_many :learn_time
+  belongs_to :category
+  belongs_to :learning_status
+  belongs_to :link_type
+
   def self.learn_time(user)
     LearnTime.create!(user_id: user.id, link_id: self.id)
   end
