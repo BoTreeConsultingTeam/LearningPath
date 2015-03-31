@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326134450) do
+ActiveRecord::Schema.define(version: 20150331100903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "icon"
+  end
 
   create_table "favourites", force: true do |t|
     t.integer  "user_id"
@@ -32,16 +39,29 @@ ActiveRecord::Schema.define(version: 20150326134450) do
     t.integer  "link_id"
   end
 
+  create_table "learning_statuses", force: true do |t|
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "link_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "links", force: true do |t|
     t.string   "title"
     t.string   "url"
-    t.string   "category"
-    t.string   "status"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "favourite"
+    t.integer  "category_id"
+    t.integer  "learning_status_id"
+    t.integer  "link_type_id"
   end
 
   create_table "taggings", force: true do |t|

@@ -1,0 +1,42 @@
+<hr/>
+<%=form_for @link do |f|%>
+  <%= f.label :url %>
+  <%= f.text_field :url, class: 'form-control'%>
+  <div class="spacer20"></div>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control'%>
+  <div class="spacer20"></div>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: 'form-control'%>
+  <div class="spacer20"></div>
+  <%= f.select :tag_list, options_for_select(@tags.map(&:name), selected: @link.tags),{},multiple: true, prompt: false, id: 'form-field-select-4', class: 'chzn-drop instructor-chosen-select chosen-select form-control', data: { placeholder: 'Select some Tags'} %>
+  <div class="col-md-6 stick_to_left" >
+    <div class="spacer20"></div>
+    <%= f.label :status %>
+    <%= f.select :learning_status_id,  options_from_collection_for_select(@statuses, 'id', 'status', @link.learning_status_id),{},{ class: 'form-control'} %>
+  </div>
+  <div class="spacer20"></div>
+  <div class="col-md-6 stick_to_right">
+     <%= f.label :category %>
+     <%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name', @link.category_id),{},{ class: 'form-control'} %>
+  </div>
+  <%= f.label :link_type %>
+  <%= f.select :link_type_id, options_from_collection_for_select(@link_types, 'id', 'name', @link.link_type_id),{},{ class: 'form-control'} %>
+  <div class="spacer70"></div>
+  <div>
+  <%= f.submit :save, class: 'btn btn-success' %>
+  <%end%>
+<%= link_to "Cancel", links_path, class: 'btn btn-danger' %>
+
+<script>
+  var config = {
+    '.chosen-select'           : {},
+    '.chosen-select-deselect'  : {allow_single_deselect:true},
+    '.chosen-select-no-single' : {disable_search_threshold:10},
+    '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+    '.chosen-select-width'     : {width:"95%"}
+  }
+  for (var selector in config) {
+    $(selector).chosen(config[selector]);
+  }
+</script>

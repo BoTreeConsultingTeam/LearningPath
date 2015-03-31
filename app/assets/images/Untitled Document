@@ -1,0 +1,63 @@
+<section class="wrapper ">
+  <div class="row mt">
+    <div class="col-lg-1 col-md-1"></div>
+    <div class="col-lg-8 col-md-8 col-sm-10 form-panel">
+      <h4 class="mb"><i class="fa fa-angle-right"></i> Add Link</h4>
+      <%= form_for @link, html: { class: "form-horizontal style-form" } do |f|%>
+        <div class="form-group">
+          <%= f.label :title, class: "col-sm-2 col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :title, class: 'form-control'%>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :url, class: "col-sm-2 col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :url, class: 'form-control'%>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, class: "col-sm-2 col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_area :description, class: 'form-control'%>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :Tag, class: "col-sm-2 col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.select :tag_list, options_for_select(@tags.map(&:name), selected: @link.tags),{},multiple: true, prompt: false, id: 'form-field-select-4', class: 'chzn-drop instructor-chosen-select chosen-select form-control', data: { placeholder: '' } %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :status, class: "col-sm-2 col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.select :status, options_for_select(['Unread', 'Read', 'Future-Read'], selected: @link.status),{},{ class: 'form-control'} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :category, class: "col-sm-2 col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.select :category, options_for_select(['Video','Podcast', 'BlogPost', 'Tutorial'],selected: @link.category),{},{ class: 'form-control'} %>
+          </div>
+        </div>
+        <div>
+        <div class="col-sm-2 col-sm-2 control-label">
+          <%= f.submit :submit, class: 'btn btn-success btn-md' %>
+        </div>
+        <%end%>
+      </div>
+    </div><!--/ row -->
+</section><!-- --/wrapper ---->
+
+<script>
+var config = {
+'.chosen-select'           : {},
+'.chosen-select-deselect'  : {allow_single_deselect:true},
+'.chosen-select-no-single' : {disable_search_threshold:10},
+'.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+'.chosen-select-width'     : {width:"95%"}
+}
+for (var selector in config) {
+  $(selector).chosen(config[selector]);
+}
+</script>
