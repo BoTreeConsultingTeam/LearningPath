@@ -440,8 +440,7 @@ a.logo b {
 }
 
 a.logo:hover, a.logo:focus {
-    text-decoration: none;
-    outline: none;
+    color: white !important;
 }
 
 a.logo span {
