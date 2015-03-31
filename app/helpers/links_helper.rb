@@ -40,10 +40,6 @@ module LinksHelper
   end
 
   def favourite_action_tooltip(link)
-    "#{marked_as_favorite?(link) ? 'Unmark ' : 'Mark'} as Favourite"
-  end
-
-  def marked_as_favorite?(link)
-    link.favourite?
+    "#{link.favourite? ? 'Unmark ' : 'Mark'} as Favourite"
   end
 end
