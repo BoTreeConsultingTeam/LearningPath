@@ -29,7 +29,7 @@ class ChartsController < ApplicationController
 
     @tags = ActsAsTaggableOn::Tag.all
     tags_usage_data = @tags.map{|tag|[ tag.name, Link.where(:user_id => current_user.id).tagged_with(tag).count]}
-    tags_question_data.add_rows(tags_usage_data.sort {|a,b| a[1] <=> b[1]}.reverse.first(10))
+    tags_question_data.add_rows(tags_usage_data)
     tag_opts   = { :width => 500, :height => 440, :title => '', :legend => 'bottom' }
     @tag_chart = GoogleVisualr::Interactive::ColumnChart.new(tags_question_data, tag_opts)
 
