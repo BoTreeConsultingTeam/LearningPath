@@ -36,14 +36,14 @@ module LinksHelper
   end
 
   def set_tooltip_on_count(number)
-      number == 0 ? "Never learned" : "#{number} time learned"
+      "#{number == 0 ? 'Never' : pluralize(number, 'time')} learned"
   end
 
-  def set_tooltip_on_favourite(link)
-    is_favourite?(link) ? "Mark as Favourite" : "Unmark as Favourite"
+  def favourite_action_tooltip(link)
+    "#{marked_as_favorite?(link) ? 'Unmark ' : 'Mark'} as Favourite"
   end
 
-  def is_favourite?(link)
-    link.favourite.nil?
+  def marked_as_favorite?(link)
+    link.favourite?
   end
 end

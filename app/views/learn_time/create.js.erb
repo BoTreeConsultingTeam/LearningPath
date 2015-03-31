@@ -1,1 +1,1 @@
-$("#learn_count_<%=@link.id%>").html("<%= @link.learn_time.count %>")
+$("#learn_count_<%=@link.id%>").html("<%= escape_javascript(render partial: 'links/learn_count',locals: { link: @link})%>");

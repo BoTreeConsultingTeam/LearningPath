@@ -1,3 +1,3 @@
 <%= link_to toggle_favourite_path(id: link.id), method: 'post', remote: true do%>
-  <i class="fa fa-heart" title= "<%= set_tooltip_on_favourite(link)%>" id=<%= 'tomato' if is_favourite_link?(link)  %> ></i>
+  <i class="fa fa-heart" title= "<%= favourite_action_tooltip(link)%>" id=<%= 'tomato' if is_favourite_link?(link)  %> ></i>
 <%end%>
