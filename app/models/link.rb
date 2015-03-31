@@ -8,6 +8,7 @@ class Link < ActiveRecord::Base
   has_many :learn_time
   belongs_to :category
   belongs_to :learning_status
+  belongs_to :link_type
 
   def self.learn_time(user)
     LearnTime.create!(user_id: user.id, link_id: self.id)

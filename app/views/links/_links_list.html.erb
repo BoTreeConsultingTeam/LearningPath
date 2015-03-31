@@ -3,6 +3,7 @@
     <div class="left"><i title= "<%= set_tool_tip(link) %>" class='<%= "#{set_category_icon(link)}" %>'></i><br/><span id="learn_count_<%=link.id %>"><%= link.learn_time.count %></span></div><p>
     <%= link_to "#{link.title}", link.url, target: '_blank'%></p>
         <span>
+          <%= image_tag link.category.icon %>
           <i id="fav_<%=link.id %>">
             <%= render :partial => 'favourite_btn', :locals => {link: link} %>
           </i>

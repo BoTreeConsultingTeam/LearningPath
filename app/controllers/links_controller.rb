@@ -4,6 +4,8 @@ class LinksController < ApplicationController
   before_filter :all_tags, only: [ :edit, :new, :update ]
   before_filter :all_categories, only: [ :edit, :new, :update ]
   before_filter :all_status, only: [ :edit, :new, :update ]
+  before_filter :all_link_types, only: [ :edit, :new, :update ]
+
   def index
     selected_tag = params[:tag]
     if selected_tag
@@ -59,7 +61,7 @@ class LinksController < ApplicationController
 
   private
     def link_params
-      params.require(:link).permit(:title, :url, :learning_status_id, :description, :category_id, :user_id, :tag_list => [])
+      params.require(:link).permit(:title, :url, :learning_status_id, :description, :category_id, :user_id,  :link_type_id, :tag_list => [])
     end
 
     def assign_link
@@ -74,6 +76,9 @@ class LinksController < ApplicationController
       @categories = Category.all
     end
 
+    def all_link_types
+      @link_types = LinkType.all
+    end
     def all_status
       @statuses = LearningStatus.all
     end
