@@ -1,5 +1,5 @@
 class Link < ActiveRecord::Base
-  self.per_page = 20
+  self.per_page = 4
   acts_as_taggable
   validates :title, :learning_status_id, :category_id, :url, presence: true
   validates :url, format: { with: URI::regexp(%w(http https)) }
