@@ -23,13 +23,27 @@ module LinksHelper
     category = link.category
     case category
       when 'Video'
-        "Video"
+        'Click here if you watched it again'
       when 'Podcast'
-        "Podcast"
-      when 'BlogPost'
-        "Blogpost"
+        'Click here if you listened it again'
       else
-        "Tutorial"
+        'Click here if you read it again'
     end
+  end
+  
+  def learning_count(link)
+    link.learn_time.count
+  end
+
+  def set_tooltip_on_count(number)
+      number == 0 ? "Never learned" : "#{number} time learned"
+  end
+
+  def set_tooltip_on_favourite(link)
+    is_favourite?(link) ? "Mark as Favourite" : "Unmark as Favourite"
+  end
+
+  def is_favourite?(link)
+    link.favourite.nil?
   end
 end

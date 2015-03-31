@@ -1,6 +1,6 @@
 <% @links.each do |link| %>
   <div class="showback" >
-    <div class="left"><i title= "<%= set_tool_tip(link) %>" class='<%= "#{set_category_icon(link)}" %>'></i><br/><span id="learn_count_<%=link.id %>"><%= link.learn_time.count %></span></div><p>
+    <div class="left"><i title= "<%= link.category %>" class='<%= "#{set_category_icon(link)}" %>'></i><br/><span title = "<%= set_tooltip_on_count(learning_count(link)) %>" id="learn_count_<%=link.id %>"><%= link.learn_time.count %></span></div><p>
     <%= link_to "#{link.title}", link.url, target: '_blank'%></p>
         <span>
           <i id="fav_<%=link.id %>">
@@ -13,7 +13,7 @@
             <i class="fa fa-trash-o" ></i>
           <%end%>
           <%= link_to learn_time_path(link.id), remote: true do %>
-            <i class="fa fa-eye"></i>
+            <i title= "<%= set_tool_tip(link) %>"class="fa fa-eye"></i>
           <% end %>
         </span>
     <div class="description">
