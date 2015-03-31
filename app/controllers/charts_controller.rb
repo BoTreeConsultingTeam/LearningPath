@@ -1,5 +1,5 @@
 class ChartsController < ApplicationController
-
+  before_filter :authenticate_user!
   before_filter :get_date
   # before_filter :google_chart_init
 

@@ -1,4 +1,5 @@
 class LearnTimeController < ApplicationController
+  before_filter :authenticate_user!
   def create
     @link = Link.find(params[:link_id])
     @learn_time = LearnTime.create!(user_id: current_user.id, link_id: params[:link_id])
