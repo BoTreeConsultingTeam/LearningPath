@@ -71,6 +71,8 @@ GEM
     mime-types (2.4.3)
     minitest (5.5.1)
     multi_json (1.11.0)
+    nav_lynx (1.1.1)
+      rails (>= 3.1.0)
     orm_adapter (0.5.0)
     pg (0.18.1)
     pry (0.10.1)
@@ -150,6 +152,7 @@ DEPENDENCIES
   google_visualr
   jbuilder (~> 2.0)
   jquery-rails
+  nav_lynx
   pg
   pry
   rails (= 4.1.8)

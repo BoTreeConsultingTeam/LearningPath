@@ -10,6 +10,7 @@ gem 'acts-as-taggable-on'
 gem 'google_visualr'
 gem 'will_paginate'
 gem 'pry'
+gem 'nav_lynx'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
