@@ -1,3 +1,4 @@
+<hr/>
 <%=form_for @link do |f|%>
   <%= f.label :url %>
   <%= f.text_field :url, class: 'form-control'%>
@@ -12,12 +13,12 @@
   <div class="col-md-6 stick_to_left" >
     <div class="spacer20"></div>
     <%= f.label :status %>
-    <%= f.select :learning_status_id,  options_from_collection_for_select(@statuses, :id, :status, @link.learning_status.id),{},{ class: 'form-control'} %>
+    <%= f.select :learning_status_id,  options_from_collection_for_select(@statuses, 'id', 'status', @link.learning_status_id),{},{ class: 'form-control'} %>
   </div>
   <div class="spacer20"></div>
   <div class="col-md-6 stick_to_right">
      <%= f.label :category %>
-     <%= f.select :category_id, options_from_collection_for_select(@categories, :id, :name, selected: @link.category.id),{},{ class: 'form-control'} %>
+     <%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name', @link.category_id),{},{ class: 'form-control'} %>
   </div>
   <div class="spacer70"></div>
   <div>
