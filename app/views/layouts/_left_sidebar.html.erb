@@ -3,25 +3,25 @@
     <ul class="sidebar-menu" id="nav-accordion" >
       <h5 class="centered"><%= current_user.name %></h5>
       <li class="mt">
-        <%= link_to root_path do %>
+        <%= link_to root_path(active_link: 'Links'), class: "#{ sidebar_active_link('Links')}" do %>
           <i class="fa fa-dashboard"></i>
           <span> Links </span>
         <% end %>
       </li>
       <li>
-        <%= link_to favourite_links_path do %>
+        <%= link_to favourite_links_path(active_link: 'Favourite'), class: "#{ sidebar_active_link('Favourite')}" do %>
           <i class="fa fa-heart"></i>
           <span> Favourites </span>
         <% end %>
       </li>
       <li>
-        <%= link_to new_link_path do %>
+        <%= link_to new_link_path(active_link: 'new'), class: "#{ sidebar_active_link('new')}" do %>
           <i class="fa fa-plus"></i>
           <span> Add New Link </span>
         <% end %>
       </li>
       <li>
-        <%= link_to chart_by_learn_path do %>
+        <%= link_to chart_by_learn_path(active_link: 'chart'), class: "#{ sidebar_active_link('chart')}" do %>
           <i class="fa fa-bar-chart-o"></i>
           <span> Reports </span>
         <% end %>
