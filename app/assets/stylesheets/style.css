@@ -2240,7 +2240,7 @@ label {
 .showback p{
 	font-size: 1.6em;
 	padding-top: 0px;
-	width: 550px;
+	width: 530px;
 	margin-left: 3px;
 	float: left;
 }
@@ -2261,7 +2261,7 @@ label {
 }
 
 .showback span i{
-	padding-left: 6px;
+	padding-left: 7px;
 	font-size: 1.2em;
 }
 .showback span i.favorite{
