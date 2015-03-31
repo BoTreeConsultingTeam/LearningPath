@@ -87,3 +87,12 @@ font-size: 20px
 .black-bg {
     border-bottom: 0px solid #ccc !important;
 }
+
+.alert-notice{
+    background-color: #dff0d8 !important;
+}
+
+.alert-error, .alert-alert  {
+    background-color: #f2dede !important;
+}
+
