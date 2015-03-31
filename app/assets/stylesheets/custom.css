@@ -87,3 +87,12 @@ font-size: 20px
 .black-bg {
     border-bottom: 0px solid #ccc !important;
 }
+
+.stick_to_left{
+    margin-left: -15px !important
+}
+
+.stick_to_right{
+    margin-right: -15px !important;
+    margin-left: 30px; !important
+}

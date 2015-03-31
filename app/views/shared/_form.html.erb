@@ -1,47 +1,39 @@
-<section class="wrapper ">
-  <div class="row mt">
-    <div class="col-lg-2 col-md-2"></div>
-    <div class="col-lg-6 col-md-6 col-sm-10 form-panel">
-      <%= link_to ' Bask to List', :back, class: "fa fa-angle-double-left" %>
-      <h3> Add Link </h3><hr/>
-      <%=form_for @link do |f|%>
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control'%>
-        <div class="spacer20"></div>
-        <%= f.label :url %>
-        <%= f.text_field :url, class: 'form-control'%>
-        <div class="spacer20"></div>
-        <%= f.label :description %>:
-        <%= f.text_area :description, class: 'form-control'%>
-        <div class="spacer20"></div>
-        <%= f.select :tag_list, options_for_select(@tags.map(&:name), selected: @link.tags),{},multiple: true, prompt: false, id: 'form-field-select-4', class: 'chzn-drop instructor-chosen-select chosen-select form-control', data: { placeholder: '' } %>
-        <div class="col-md-6">
-          <div class="spacer20"></div>
-          <%= f.label :status %>:
-          <%= f.select :status, options_for_select(['Unread', 'Read', 'Future-Read'], selected: @link.status),{},{ class: 'form-control'} %>
-        </div>
-        <div class="spacer20"></div>
-        <div class="col-md-6">
-           <%= f.label :category %>:
-           <%= f.select :category, options_for_select(['Video','Podcast', 'BlogPost', 'Tutorial'],selected: @link.category),{},{ class: 'form-control'} %>
-        </div>
-        <div class="spacer70"></div>
-        <div>
-        <%= f.submit :submit, class: 'btn btn-success btn-md' %>
-        <%end%>
-      </div>
-    </div><!--/ row -->
-</section><!-- --/wrapper ---->
+<%=form_for @link do |f|%>
+  <%= f.label :url %>
+  <%= f.text_field :url, class: 'form-control'%>
+  <div class="spacer20"></div>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control'%>
+  <div class="spacer20"></div>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: 'form-control'%>
+  <div class="spacer20"></div>
+  <%= f.select :tag_list, options_for_select(@tags.map(&:name), selected: @link.tags),{},multiple: true, prompt: false, id: 'form-field-select-4', class: 'chzn-drop instructor-chosen-select chosen-select form-control', data: { placeholder: 'Select some Tags'} %>
+  <div class="col-md-6 stick_to_left" >
+    <div class="spacer20"></div>
+    <%= f.label :status %>
+    <%= f.select :status, options_for_select(['Not yet Learned', 'Learned', 'Want to Learn Again'], selected: @link.status),{},{ class: 'form-control'} %>
+  </div>
+  <div class="spacer20"></div>
+  <div class="col-md-6 stick_to_right">
+     <%= f.label :category %>
+     <%= f.select :category, options_for_select(['Blog Post','Video','Podcast','Tutorial'],selected: @link.category),{},{ class: 'form-control'} %>
+  </div>
+  <div class="spacer70"></div>
+  <div>
+  <%= f.submit :save, class: 'btn btn-success' %>
+  <%end%>
+<%= link_to "Cancel", links_path, class: 'btn btn-danger' %>
 
 <script>
-var config = {
-'.chosen-select'           : {},
-'.chosen-select-deselect'  : {allow_single_deselect:true},
-'.chosen-select-no-single' : {disable_search_threshold:10},
-'.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-'.chosen-select-width'     : {width:"95%"}
-}
-for (var selector in config) {
-  $(selector).chosen(config[selector]);
-}
+  var config = {
+    '.chosen-select'           : {},
+    '.chosen-select-deselect'  : {allow_single_deselect:true},
+    '.chosen-select-no-single' : {disable_search_threshold:10},
+    '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+    '.chosen-select-width'     : {width:"95%"}
+  }
+  for (var selector in config) {
+    $(selector).chosen(config[selector]);
+  }
 </script>
