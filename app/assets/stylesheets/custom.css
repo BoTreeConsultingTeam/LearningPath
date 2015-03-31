@@ -40,7 +40,8 @@
     height: 40px;
     bottom: 0px;
     width: 100%;
-    background-color: #ff5555 !important;
+    color: black !important;
+    background-color: #ffd777 !important;
 }
 
 body{
@@ -48,32 +49,33 @@ body{
 }
 
 .black-bg{
-    background-color: #ff7777 !important;
+    background-color: #ffd777 !important;
+    border-color: #c9aa5f !important
 }
 .logout{
-    background-color: #ff5555 !important;
+    /*background-color: #ff5555 !important;*/
 }
 a:hover{
     text-decoration: none !important;
 }
-.form-login h2.form-login-heading {
-    background-color: #ff7777 !important;
-}
+/*.form-login h2.form-login-heading {*/
+    /*background-color: #ff7777 !important;*/
+/*}*/
 
-.btn-theme:hover, .btn-theme:focus, .btn-theme:active {
-    background-color: #ff5050 !important;
-    border-color: #ff8080 !important;
-    border-bottom: 1px solid #ff8080;
-    border-right: 1px solid #ff8080;
-}
+/*.btn-theme:hover, .btn-theme:focus, .btn-theme:active {*/
+    /*background-color: #ff5050 !important;*/
+    /*border-color: #ff8080 !important;*/
+    /*border-bottom: 1px solid #ff8080;*/
+    /*border-right: 1px solid #ff8080;*/
+/*}*/
 
-.btn-theme{
-    background-color: #ff6060 !important;
-    border-top: 4px solid #ff4040;
-    border-left: 4px solid #ff4040;
+/*.btn-theme{*/
+    /*background-color: #logout !important;*/
+    /*border-top: 4px solid #ff4040;*/
+    /*border-left: 4px solid #ff4040;*/
     /*border-color: #ff4545 !important;*/
 
-}
+/*}*/
 #tomato {
     color: #ff7777;
 }

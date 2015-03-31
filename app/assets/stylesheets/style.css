@@ -2246,7 +2246,7 @@ label {
 }
 
 .showback span{
-	float: right;
+	/*float: right;*/
 	right: 50px;
 	padding-top: 9px;
 	clear:right;
@@ -2261,7 +2261,7 @@ label {
 }
 
 .showback span i{
-	padding-left: 10px;
+	padding-left: 6px;
 	font-size: 1.2em;
 }
 .showback span i.favorite{
