@@ -5,9 +5,9 @@ class LinksController < ApplicationController
   def index
     selected_tag = params[:tag]
     if selected_tag
-      @links = current_user_links.tagged_with(selected_tag).paginate(page: page)
+      @links = current_user_links.tagged_with(selected_tag).order(:created_at => :desc).paginate(page: page)
     else
-      @links = current_user_links.paginate(page: page)
+      @links = current_user_links.order(:created_at => :desc).paginate(page: page)
     end
   end
 
@@ -51,7 +51,7 @@ class LinksController < ApplicationController
   end
 
   def favourites
-    @links = current_user.links.where(favourite: true).paginate(page: page)
+    @links = current_user.links.where(favourite: true).order(:created_at => :desc).paginate(page: page)
     render 'links/index'
   end
 
