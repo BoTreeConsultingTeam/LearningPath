@@ -7,16 +7,16 @@ postgre_common_config: &postgre_common_config
   host: localhost # If the DB is setup on local machine then use: localhost
 
 development:
-  database: learning_path_development
+  database: learningpath_development
   <<: *postgre_common_config
 
 # Warning: The database defined as "skill_hunt_test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  database: learning_path_test
+  database: learningpath_test
   <<: *postgre_common_config
 
 production:
-  database: learning_path_production
+  database: learningpath_production
   <<: *postgre_common_config
