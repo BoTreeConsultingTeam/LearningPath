@@ -6,7 +6,6 @@ class Link < ActiveRecord::Base
   has_many :favourites
   belongs_to :user
   has_many :learn_time
-
   def self.learn_time(user)
     LearnTime.create!(user_id: user.id, link_id: self.id)
   end
