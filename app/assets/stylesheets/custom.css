@@ -128,9 +128,42 @@ font-size: 20px
 .toggle_btn{
     background-color: white !important;
     padding: 0px !important;
+    color: #787978 !important;
+    margin-top: 9px !important;
 }
+.toggle_btn:hover{
+    color: black !important;
 
+}
 .btn-link-menu{
     float: right;
-    margin-top: -30px
+    margin-top: -30px;
+}
+.description_div {
+    display: none;
+}
+.show_me{
+    display: block !important;
+}
+.hide_me{
+    display: none;
+}
+.view_toggle_font{
+    font-size:12px;
+    padding-left: 10px;
+}
+.favourite_btn{
+    color: #aeb2b7;
+}
+.favourite_btn:hover{
+    color: #ff7777;
+}
+.btn-group.open .dropdown-toggle{
+    box-shadow: none !important;
+}
+.btn-group.open .dropdown-toggle:focus{
+    box-shadow: none !important;
+}
+.btn:active{
+    box-shadow: none !important;
 }

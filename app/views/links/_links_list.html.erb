@@ -13,15 +13,20 @@
       <%= image_tag link.category.icon, title: link.category.name %>
     </span>
     <div class="description">
-      <%= link.description %>
-    </div>
+      <div class="truncate_desc<%=link.id%>"><%= truncate(link.description, length: 100, escape: false) {link_to "More", 'javascript:void(0)', id: "#{link.id}", class:"view_desc_more view_toggle_font" } %></div>
+      <div class=" truncate_desc_show<%=link.id%> hide_me"><%= link.description%><%= link_to "Less", 'javascript:void(0)', id: "#{link.id}", class:"view_desc_less view_toggle_font" %></div>
+      <div id="description_<%=link.id%>" class="description_div">
+        <%= link.description[101..link.description.length-1] %></div>
+        <%= link_to "Less", 'javascript:void(0)', id: "#{link.id}", class:"view_desc hide" %>
+    </div><br/>
+<div>
     <div class="tag">
       <% link.tags.each do |tag| %>
         <%= link_to tag.name, links_path(tag: tag.name), class: "btn btn-sm btn-primary" %>
       <% end %>
     </div>
     <div class="btn-group btn-link-menu" id="<%="btn_group#{link.id}"%>">
-      <button data-toggle="dropdown" class="btn dropdown-toggle toggle_btn fa fa-list " title='Options' type="button">
+      <button data-toggle="dropdown" class="btn dropdown-toggle toggle_btn fa fa-bars " title='Options' type="button">
         <span class="sr-only">Toggle Dropdown</span>
       </button>
       <ul role="menu" class="dropdown-menu">
@@ -30,6 +35,7 @@
         <li><%= link_to 'Delete',link_path(link), method: 'delete',data: { confirm: 'Are you sure? Do you want to delete?'} %></li>
       </ul>
     </div>
+ </div>
   </div><!-- /showback -->
 <% end %>
 </div>
@@ -39,4 +45,13 @@
        $('#'+this.id).toggleClass('open');
       }
   )
+  $('.view_desc_more').click(function () {
+    $('.truncate_desc'+this.id).toggleClass('hide_me');
+    $('.truncate_desc_show'+this.id).toggleClass('show_me');
+  })
+  $('.view_desc_less').click(function () {
+    $('.truncate_desc'+this.id).toggleClass('hide_me');
+    $('.truncate_desc_show'+this.id).toggleClass('show_me');
+  })
+
 </script>
