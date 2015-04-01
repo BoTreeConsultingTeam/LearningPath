@@ -1,2 +1,2 @@
 $('#fav_<%= @link.id %>').html("<%= escape_javascript(render partial: 'links/favourite_btn',locals: { link: @link})%>");
-
+$('.flash_msg').remove();
