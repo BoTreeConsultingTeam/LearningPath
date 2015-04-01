@@ -14,6 +14,8 @@ module LinksHelper
         "fa fa-volume-up"
       when 'BlogPost'
         "fa fa-bold"
+      when 'Book'
+        "fa fa-book"
       else
         "fa fa-file-text"
     end
