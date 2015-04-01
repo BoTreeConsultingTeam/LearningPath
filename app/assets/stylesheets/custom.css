@@ -167,3 +167,12 @@ font-size: 20px
 .btn:active{
     box-shadow: none !important;
 }
+
+.fonts_login{
+font-family: "Ruda",sans-serif !important;
+}
+a:focus, a:active {
+    color: #337ab7 !important;
+    outline: none !important;
+    text-decoration: none !important;
+}
