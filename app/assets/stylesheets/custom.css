@@ -117,6 +117,14 @@ font-size: 20px
 .link_pagination {
     display: none;
 }
+
+.alert_msg {
+    width: 100%;
+    align-content: center;
+    padding-top: 5%;
+    font-size: 15px;
+    margin-bottom: -75px;
+}
 .toggle_btn{
     background-color: white !important;
     padding: 0px !important;

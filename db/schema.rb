@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331100903) do
+ActiveRecord::Schema.define(version: 20150404073932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20150331100903) do
     t.integer  "user_id"
     t.boolean  "favourite"
     t.integer  "category_id"
-    t.integer  "learning_status_id"
+    t.integer  "learning_status_id", default: 1
     t.integer  "link_type_id"
   end
 
