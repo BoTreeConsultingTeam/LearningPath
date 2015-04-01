@@ -13,8 +13,7 @@
       <%= image_tag link.category.icon, title: link.category.name %>
     </span>
     <div class="description">
-      <%= link.description %>
-    </div><br/>
+      <%= link.description %></div>
     <div class="tag">
       <% link.tags.each do |tag| %>
         <%= link_to tag.name, links_path(tag: tag.name), class: "btn btn-sm btn-theme" %>
