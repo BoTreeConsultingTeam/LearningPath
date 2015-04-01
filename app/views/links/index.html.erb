@@ -6,7 +6,9 @@
       <div class="col-lg-8 col-md-8 col-sm-12 links" id="links-list">
         <%= render partial: 'links/links_list', locals: { links: @links}%>
       </div>
-      <%= will_paginate @links %>
+      <div class="link_pagination">
+        <%= will_paginate @links %>
+      </div>
     <% end %>
   </div>
 </section>
