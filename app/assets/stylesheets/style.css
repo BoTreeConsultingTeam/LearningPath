@@ -2279,5 +2279,9 @@ label {
 	border-radius: 3px;
 }
 
-
-
+span.mandatory {
+    color: red !important;
+    float: right;
+    margin-left: 5px;
+    position: absolute;
+}
