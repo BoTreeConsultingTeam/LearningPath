@@ -117,3 +117,7 @@ font-size: 20px
 .link_pagination {
     display: none;
 }
+.toggle_btn{
+    background-color: white !important;
+    padding: 0px !important;
+}
