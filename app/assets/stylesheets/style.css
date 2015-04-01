@@ -7,7 +7,7 @@ Premium: http://www.gridgum.com
 */
 
 /* Import fonts */
-@import url(css.css);
+@import url(css.css.scss.erb);
 
 /* BASIC THEME CONFIGURATION */
 body {
