@@ -6,7 +6,6 @@
   <h2 class="form-login-heading">Sign Up</h2>
   <div class="login-wrap">
     <%= devise_error_messages! %>
-
     <div class="field">
       <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: 'Name' %>
     </div>
@@ -14,11 +13,11 @@
     <div class="field">
       <%= f.email_field :email, class: "form-control", placeholder: 'Email' %>
     </div>
-
+    <div class="spacer20"></div>
     <div class="field">
       <% if @validatable %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
+      <% end %>
       <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: 'Password' %>
     </div>
     <div class="spacer20"></div>

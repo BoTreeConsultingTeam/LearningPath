@@ -8,14 +8,12 @@
           <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: 'User ID' %>
           <div class="spacer20"></div>
           <%= f.password_field :password, autocomplete: "off", class: "form-control" , placeholder: 'Password' %>
-
+          <div class="spacer10"></div>
           <% if devise_mapping.rememberable? -%>
-
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me %>
-
           <% end -%>
-
+          <div class="spacer20"></div>
           <%= f.submit "Log in", class: "btn btn-theme btn-block" %> 
           <hr>
           <div class="registration">

@@ -8,27 +8,25 @@
             <%= devise_error_messages! %>
 
             <div class="field">
-            <%= f.label :name %><br />
-            <%= f.text_field :name, autofocus: true, class: "form-control" %>
+            <%= f.text_field :name, autofocus: true, class: "form-control", placeholder:'Name' %>
             </div>
-
+            <div class="spacer20"></div>
             <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, class: "form-control" %>
+            <%= f.email_field :email, class: "form-control", placeholder: 'Email' %>
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
             <% end %>
-
+            <div class="spacer20"></div>
             <div class="field">
-            <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+            <i>(leave blank if you don't want to change it)</i><br />
+
+            <%= f.password_field :password, autocomplete: "off", class: "form-control",placeholder: 'Password' %>
             </div>
-
+            <div class="spacer20"></div>
             <div class="field">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control",placeholder: 'Retype Password' %>
             </div>
 
             <div class="field" style="display: none">
@@ -39,8 +37,6 @@
             <div class="actions">
             <%= f.submit "Update", class: "btn btn-theme btn-block" %>
             </div><br/>
-
-            <%= link_to "<i class='fa fa-angle-double-left'></i> Back".html_safe, :back %>
           </div>
         <% end %>
     </div>
