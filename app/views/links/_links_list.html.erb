@@ -3,24 +3,15 @@
     <div class="left"><i title= "<%= link.link_type.name %>" class='<%= "#{set_category_icon(link)}" %>'></i><br/>
       <span id="learn_count_<%=link.id %>">
         <%= render :partial => 'learn_count', :locals => {link: link} %>
-      </span>
+      </span><br>
+      <i id="fav_<%=link.id %>">
+        <%= render :partial => 'favourite_btn', :locals => {link: link} %>
+      </i>
     </div><p>
     <%= link_to "#{link.title}", link.url, target: '_blank'%></p>
-        <span>
-          <%= image_tag link.category.icon, title: link.category.name %>
-          <i id="fav_<%=link.id %>">
-            <%= render :partial => 'favourite_btn', :locals => {link: link} %>
-          </i>
-          <%= link_to edit_link_path(link), title: 'Edit' do%>
-            <i class="fa fa-edit" style="text-decoration: none"></i>
-          <%end%>
-          <%= link_to link_path(link), method: 'delete', title: 'Delete',data: { confirm: 'Are you sure? Do you want to delete?'} do %>
-            <i class="fa fa-trash-o" ></i>
-          <%end%>
-          <%= link_to learn_time_path(link.id), remote: true do %>
-            <i title= "<%= set_tool_tip(link) %>"class="fa fa-eye"></i>
-          <% end %>
-        </span>
+    <span class="pull-right">
+      <%= image_tag link.category.icon, title: link.category.name %>
+    </span>
     <div class="description">
       <%= link.description %>
     </div><br/>
@@ -29,6 +20,23 @@
         <%= link_to tag.name, links_path(tag: tag.name), class: "btn btn-sm btn-theme" %>
       <% end %>
     </div>
+    <div class="btn-group btn-link-menu" id="<%="btn_group#{link.id}"%>">
+      <button data-toggle="dropdown" class="btn dropdown-toggle toggle_btn fa fa-list " title='Options' type="button">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li><%= link_to 'Edit', edit_link_path(link) %> </li>
+        <li><%= link_to 'Increase Learn Count', learn_time_path(link.id), remote: true, data: { confirm: 'You are about to increase learn count of this link. Are you sure?'} %></li>
+        <li><%= link_to 'Delete',link_path(link), method: 'delete',data: { confirm: 'Are you sure? Do you want to delete?'} %></li>
+      </ul>
+    </div>
   </div><!-- /showback -->
 <% end %>
 </div>
+
+<script>
+  $('.btn-group').click(function(){
+       $('#'+this.id).toggleClass('open');
+      }
+  )
+</script>

@@ -125,3 +125,12 @@ font-size: 20px
     font-size: 15px;
     margin-bottom: -75px;
 }
+.toggle_btn{
+    background-color: white !important;
+    padding: 0px !important;
+}
+
+.btn-link-menu{
+    float: right;
+    margin-top: -30px
+}
