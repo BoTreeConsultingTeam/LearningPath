@@ -1,5 +1,5 @@
 <% unless flash.empty? %>
-  <div class="flash_msg" style="width: 100%; align-content: center; padding-top: 5%; font-size: 15px">
+  <div class="flash_msg" style="width: 100%; align-content: center; padding-top: 5%; font-size: 15px; margin-bottom: -75px;">
     <% flash.each do |name, message| %>
       <div class="text-center alert alert-<%= name %>">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -19,6 +19,12 @@
 
 <script>
   $('.close').click(function(){
-    $('.text-center').remove();
+    $('.flash_msg').remove();
+  });
+
+  $(document).ready(function(){
+    setInterval(function(){
+      $('.close').trigger('click');
+    }, 3000);
   });
 </script>
