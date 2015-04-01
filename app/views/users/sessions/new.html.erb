@@ -5,11 +5,9 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-login form-panel"} ) do |f| %>
         <h2 class="form-login-heading">sign in now</h2>
         <div class="login-wrap">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, class: "form-control"  %>
-
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "off", class: "form-control"  %>
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: 'User ID' %>
+          <div class="spacer20"></div>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" , placeholder: 'Password' %>
 
           <% if devise_mapping.rememberable? -%>
 
@@ -18,7 +16,8 @@
 
           <% end -%>
 
-          <%= f.submit "Log in", class: "btn btn-theme btn-block" %>
+          <%= f.submit "Log in", class: "btn btn-theme btn-block" %> 
+          <hr>
           <div class="registration">
             <%= render "users/shared/links" %>
           </div>
