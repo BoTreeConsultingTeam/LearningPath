@@ -13,10 +13,11 @@
       <%= image_tag link.category.icon, title: link.category.name %>
     </span>
     <div class="description">
-      <%= link.description %></div>
+      <%= link.description %>
+    </div>
     <div class="tag">
       <% link.tags.each do |tag| %>
-        <%= link_to tag.name, links_path(tag: tag.name), class: "btn btn-sm btn-theme" %>
+        <%= link_to tag.name, links_path(tag: tag.name), class: "btn btn-sm btn-primary" %>
       <% end %>
     </div>
     <div class="btn-group btn-link-menu" id="<%="btn_group#{link.id}"%>">
