@@ -9,7 +9,7 @@
       </i>
     </div><p>
     <%= link_to "#{link.title}", link.url, target: '_blank'%></p>
-        <span style="float: right">
+        <span class="pull-right">
           <%= image_tag link.category.icon, title: link.category.name %>
         </span>
     <div class="description">
@@ -20,13 +20,13 @@
         <%= link_to tag.name, links_path(tag: tag.name), class: "btn btn-sm btn-theme" %>
       <% end %>
     </div>
-    <div class="btn-group" style="float: right; margin-top: -30px" id="<%="btn_group#{link.id}"%>">
+    <div class="btn-group btn-group_position" id="<%="btn_group#{link.id}"%>">
       <button data-toggle="dropdown" class="btn dropdown-toggle toggle_btn fa fa-list " title='Options' type="button">
         <span class="sr-only">Toggle Dropdown</span>
       </button>
       <ul role="menu" class="dropdown-menu">
         <li><%= link_to 'Edit', edit_link_path(link) %> </li>
-        <li><%= link_to 'Increase Learn Count', learn_time_path(link.id), remote: true, data: { confirm: 'Are you sure? Do you want to increase learn count?'} %></li>
+        <li><%= link_to 'Increase Learn Count', learn_time_path(link.id), remote: true, data: { confirm: 'You are about to increase the learn count of this link. Are you sure?'} %></li>
         <li><%= link_to 'Delete',link_path(link), method: 'delete',data: { confirm: 'Are you sure? Do you want to delete?'} %></li>
       </ul>
     </div>
@@ -37,7 +37,7 @@
 
 <script>
   $('.btn-group').click(function(){
-       $('#'+this.id).addClass('open');
+       $('#'+this.id).toggleClass('open');
       }
   )
 </script>
