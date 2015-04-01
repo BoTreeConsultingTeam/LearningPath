@@ -19,23 +19,23 @@
         <%= link.description[101..link.description.length-1] %></div>
         <%= link_to "Less", 'javascript:void(0)', id: "#{link.id}", class:"view_desc hide" %>
     </div><br/>
-<div>
-    <div class="tag">
-      <% link.tags.each do |tag| %>
-        <%= link_to tag.name, links_path(tag: tag.name), class: "btn btn-sm btn-primary" %>
-      <% end %>
+    <div>
+      <div class="tag">
+        <% link.tags.each do |tag| %>
+          <%= link_to tag.name, links_path(tag: tag.name), class: "btn btn-sm btn-primary" %>
+        <% end %>
+      </div>
+      <div class="btn-group btn-link-menu" id="<%="btn_group#{link.id}"%>">
+        <button data-toggle="dropdown" class="btn dropdown-toggle toggle_btn fa fa-bars " title='Options' type="button">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul role="menu" class="dropdown-menu">
+          <li><%= link_to 'Edit', edit_link_path(link) %> </li>
+          <li><%= link_to 'Increase Learn Count', learn_time_path(link.id), remote: true, data: { confirm: 'You are about to increase learn count of this link. Are you sure?'} %></li>
+          <li><%= link_to 'Delete',link_path(link), method: 'delete',data: { confirm: 'Are you sure? Do you want to delete?'} %></li>
+        </ul>
+      </div>
     </div>
-    <div class="btn-group btn-link-menu" id="<%="btn_group#{link.id}"%>">
-      <button data-toggle="dropdown" class="btn dropdown-toggle toggle_btn fa fa-bars " title='Options' type="button">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul role="menu" class="dropdown-menu">
-        <li><%= link_to 'Edit', edit_link_path(link) %> </li>
-        <li><%= link_to 'Increase Learn Count', learn_time_path(link.id), remote: true, data: { confirm: 'You are about to increase learn count of this link. Are you sure?'} %></li>
-        <li><%= link_to 'Delete',link_path(link), method: 'delete',data: { confirm: 'Are you sure? Do you want to delete?'} %></li>
-      </ul>
-    </div>
- </div>
   </div><!-- /showback -->
 <% end %>
 </div>
