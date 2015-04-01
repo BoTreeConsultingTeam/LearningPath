@@ -10,7 +10,7 @@
     </div><p>
     <%= link_to "#{link.title}", link.url, target: '_blank'%></p>
     <span class="pull-right">
-      <%= image_tag link.category.icon, title: link.category.name %>
+      <%= image_tag link.category.icon, title: link.category.name, height: '22px', width:'20px' %>
     </span>
     <div class="description">
       <div class="truncate_desc<%=link.id%>"><%= truncate(link.description, length: 100, escape: false) {link_to "More", 'javascript:void(0)', id: "#{link.id}", class:"view_desc_more view_toggle_font" } %></div>

@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-categories = [['Ruby', 'ruby.png'],['Web', 'web.png'],['JS', 'js.png'],['CSS3', 'css3.png']]
+categories = [['Ruby', 'ruby.png'],['Rails', 'rails.png'],['JS', 'js.png'],['HTML', 'html.png'],['CSS', 'css3.png'], ['Git', 'git.png'], ['Agile', 'agile.png'], ['Deployment', 'deployment.png'], ['TDD', 'tdd.png']]
 
 categories.each do |name, icon|
   Category.create(name: name, icon: icon) unless Category.find_by_name(name).present?
