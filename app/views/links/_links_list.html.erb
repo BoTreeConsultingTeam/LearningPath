@@ -9,9 +9,9 @@
       </i>
     </div><p>
     <%= link_to "#{link.title}", link.url, target: '_blank'%></p>
-        <span class="pull-right">
-          <%= image_tag link.category.icon, title: link.category.name %>
-        </span>
+    <span class="pull-right">
+      <%= image_tag link.category.icon, title: link.category.name %>
+    </span>
     <div class="description">
       <%= link.description %>
     </div><br/>
@@ -30,7 +30,6 @@
         <li><%= link_to 'Delete',link_path(link), method: 'delete',data: { confirm: 'Are you sure? Do you want to delete?'} %></li>
       </ul>
     </div>
-
   </div><!-- /showback -->
 <% end %>
 </div>
