@@ -27,15 +27,10 @@
   </div>
   <span class="col-sm-1 col-sm-1 control-label" ></span>
   <div class="form-group">
-    <div class="col-sm-3 stick_to_left">
-      <%= f.select :learning_status_id,  options_from_collection_for_select(@statuses, 'id', 'status', @link.learning_status_id), {}, { class: 'form-control'} %>
-    </div>
-
-    <div class="col-sm-4">
+    <div class="col-sm-5 stick_to_left">
       <%= f.select :link_type_id, options_from_collection_for_select(@link_types, 'id', 'name', @link.link_type_id), {}, { class: 'form-control'} %>
     </div>
-
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name', @link.category_id), {prompt: 'Select Categories'},{ class: 'form-control'} %>
     </div>
   </div>
