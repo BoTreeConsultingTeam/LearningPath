@@ -19,16 +19,6 @@
 
 <script>
   $('.close').click(function(){
-    remove_flash_messages()
+      $('.flash_msg').remove();
   });
-
-  $(document).ready(function(){
-    setInterval(function(){
-      remove_flash_messages();
-    }, 5000);
-  });
-
-  function remove_flash_messages() {
-    $('.flash_msg').remove();
-  }
 </script>
