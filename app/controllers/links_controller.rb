@@ -24,7 +24,7 @@ class LinksController < ApplicationController
     current_user.tag(@link, :with => link_params[:tag_list], :on => :tags)
 
     if @link.save
-      redirect_to links_path
+      redirect_to root_path
       flash[:success] = "You have created it successfully"
     else
       flash[:danger] = @link.errors.full_messages
@@ -40,7 +40,7 @@ class LinksController < ApplicationController
       @link.update(link_params.merge({user_id: current_user.id}).except!(:tag_list))
       current_user.tag(@link, :with => link_params[:tag_list], :on => :tags)
       flash[:success] = 'Successfully Updated!!'
-      redirect_to links_path
+      redirect_to root_path
     else
       flash.now[:danger] = @link.errors.full_messages
       render 'edit'
@@ -50,7 +50,7 @@ class LinksController < ApplicationController
   def destroy
     if @link.destroy
       flash[:success] = ["Link Removed Successfully"]
-      redirect_to links_path
+      redirect_to root_path
     end
   end
 
