@@ -2272,6 +2272,8 @@ label {
 	clear:left;
 	margin-left: 30px;
     word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
 }
 .tag .btn-sm{
 	padding: 2px 10px;

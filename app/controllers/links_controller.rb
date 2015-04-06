@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
   before_filter :authenticate_user!
   before_filter :assign_link, only: [:update, :destroy, :edit]
-  before_filter :all_tags, only: [ :edit, :new, :update ]
+  before_filter :user_specific_tags, only: [ :edit, :new, :update ]
   before_filter :all_categories, only: [ :edit, :new, :update ]
   before_filter :all_status, only: [ :edit, :new, :update ]
   before_filter :all_link_types, only: [ :edit, :new, :update ]
@@ -68,10 +68,9 @@ class LinksController < ApplicationController
       @link = Link.find(params[:id])
     end
 
-    def all_tags
-      @tags = Tag.all
+    def user_specific_tags
+      @tags = current_user.owned_tags
     end
-
     def all_categories
       @categories = Category.all
     end
