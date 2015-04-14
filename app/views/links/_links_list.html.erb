@@ -13,11 +13,8 @@
       <%= image_tag link.category.icon, title: link.category.name, height: '22px', width:'20px' if link.category.present? %>
     </span>
     <div class="description">
-      <div class="truncate_desc<%=link.id%>"><%= truncate(link.description, length: 200, escape: false) {link_to "More", 'javascript:void(0)', id: "#{link.id}", class:"view_desc_more view_toggle_font" } %></div>
-      <div class=" truncate_desc_show<%=link.id%> hide_me"><%= link.description%><%= link_to "Less", 'javascript:void(0)', id: "#{link.id}", class:"view_desc_less view_toggle_font" %></div>
-      <div id="description_<%=link.id%>" class="description_div">
-        <%= link.description[101..link.description.length-1] %></div>
-        <%= link_to "Less", 'javascript:void(0)', id: "#{link.id}", class:"view_desc hide" %>
+      <div class="truncate_desc<%=link.id%>"><%= truncate(simple_format(link.description), length: 200, escape: false) {link_to "More", 'javascript:void(0)', id: "#{link.id}", class:"view_desc_more view_toggle_font" } %></div>
+      <div class=" truncate_desc_show<%=link.id%> hide_me"><%= simple_format(link.description)%><%= link_to "Less", 'javascript:void(0)', id: "#{link.id}", class:"view_desc_less #{link.id} view_toggle_font" %></div>
     </div><br/>
     <div>
       <div class="tag">
@@ -48,10 +45,12 @@
   $('.view_desc_more').click(function () {
     $('.truncate_desc'+this.id).toggleClass('hide_me');
     $('.truncate_desc_show'+this.id).toggleClass('show_me');
+    var v = $( ".truncate_desc_show"+this.id).find("p");
+    v.append($('.'+this.id));
+//    alert(v);
   })
   $('.view_desc_less').click(function () {
     $('.truncate_desc'+this.id).toggleClass('hide_me');
     $('.truncate_desc_show'+this.id).toggleClass('show_me');
   })
-
 </script>
