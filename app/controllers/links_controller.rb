@@ -13,6 +13,10 @@ class LinksController < ApplicationController
     else
       @links = current_user_links.order(:created_at => :desc).paginate(page: page)
     end
+    respond_to do |format|
+      format.html
+      format.csv { send_data to_csv(current_user) }
+    end
   end
 
   def new
@@ -58,6 +62,16 @@ class LinksController < ApplicationController
     @links = current_user.links.where(favourite: true).order(:created_at => :desc).paginate(page: page)
     render 'links/index'
   end
+  def import
+    if params[:file]
+      Link.import(params[:file], current_user)
+       flash[:notice] =  "Links imported."
+    else
+      flash[:danger] = "Please specify file name."
+    end
+    redirect_to root_url
+  end
+
 
   private
     def link_params
@@ -88,5 +102,20 @@ class LinksController < ApplicationController
     def current_user_links
       current_user.links
     end
+
+  def to_csv(user, options= {})
+    column_names = Link.column_names
+    column_names << 'tag_list'
+    column_names.delete_at(0)
+    CSV.generate(options) do |csv|
+      csv << column_names
+      user.links.each do |link|
+        binding.pry
+        arr = link.attributes.except!('id').values_at(*column_names)
+        arr[-1] = link.tags.join(', ')
+        csv << arr
+      end
+    end
+  end
 end
 

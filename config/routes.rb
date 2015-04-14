@@ -2,10 +2,12 @@ Rails.application.routes.draw do
 
   root 'links#index'
   get 'links/favourites' => 'links#favourites', :as => :favourite_links
-  resources :links
+  get 'links/import_form' => 'links#import_form', :as => :links_import_form
+  resources :links do
+    collection { post :import }
+  end
   resources :tag
   resources :favourites
-
   get 'learn_time/create/:link_id' => 'learn_time#create', as: :learn_time
 
   get 'charts/chart_by_learn(/:days)' => 'charts#chart_by_learn', as: :chart_by_learn
