@@ -62,6 +62,7 @@ class LinksController < ApplicationController
     @links = current_user.links.where(favourite: true).order(:created_at => :desc).paginate(page: page)
     render 'links/index'
   end
+
   def import
     if params[:file]
       Link.import(params[:file], current_user)
@@ -110,7 +111,6 @@ class LinksController < ApplicationController
     CSV.generate(options) do |csv|
       csv << column_names
       user.links.each do |link|
-        binding.pry
         arr = link.attributes.except!('id').values_at(*column_names)
         arr[-1] = link.tags.join(', ')
         csv << arr

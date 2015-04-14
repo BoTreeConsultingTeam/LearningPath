@@ -30,7 +30,7 @@ class Link < ActiveRecord::Base
   end
 
   def self.find_or_create(hash, current_user)
-     @link = Link.create! hash.except!(:tag_list) unless Link.find_by_id(hash['id'].to_i)
+     @link = Link.create! hash.except!('tag_list') unless Link.find_by_id(hash['id'].to_i)
      current_user.tag(@link, :with => hash['tag_list'], :on => :tags)
   end
 
