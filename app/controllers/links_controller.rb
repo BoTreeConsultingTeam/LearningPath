@@ -107,7 +107,7 @@ class LinksController < ApplicationController
   def to_csv(user, options= {})
     column_names = Link.column_names
     column_names << 'tag_list'
-    column_names.delete_at(0)
+    column_names.delete_at(0) if column_names[0] == 'id'
     CSV.generate(options) do |csv|
       csv << column_names
       user.links.each do |link|
