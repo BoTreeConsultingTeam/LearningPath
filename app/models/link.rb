@@ -1,3 +1,4 @@
+require 'csv'
 class Link < ActiveRecord::Base
   self.per_page = 20
   acts_as_taggable
@@ -20,5 +21,20 @@ class Link < ActiveRecord::Base
 
   def destroy_favourite(favourite)
     favourite.destroy_all
+  end
+
+  def self.import(file, current_user)
+    CSV.foreach(file.path, headers: true) do |row|
+      find_or_create(row.to_hash.merge!(user_id: current_user.id), current_user)
+    end
+  end
+
+  def self.find_or_create(hash, current_user)
+    @link = self.where('user_id = ? AND url = ?  ', current_user.id, hash['url'])
+    if @link.empty?
+      without_taglist = hash.except('tag_list')
+      @link = self.create! without_taglist
+      current_user.tag(@link, :with => hash['tag_list'], :on => :tags)
+    end
   end
 end

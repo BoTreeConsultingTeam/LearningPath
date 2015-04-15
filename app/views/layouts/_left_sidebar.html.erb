@@ -25,6 +25,18 @@
           <span> Reports </span>
         <% end %>
       </li>
+      <li>
+        <%= link_to links_path(format: "csv") do %>
+          <i class="fa fa-download"></i>
+          <span> Export Links</span>
+        <% end %>
+      </li>
+      <li>
+        <%= nav_link_to links_import_form_path do %>
+          <i class="fa fa-upload"></i>
+          <span> Import Links </span>
+        <% end %>
+      </li>
     </ul>
   </div>
 </aside>
