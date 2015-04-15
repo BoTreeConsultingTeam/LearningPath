@@ -64,9 +64,14 @@ class LinksController < ApplicationController
   end
 
   def import
-    if params[:file]
-      Link.import(params[:file], current_user)
-       flash[:notice] =  "Links imported."
+    file_params = params[:file]
+    if file_params
+      if File.extname(file_params.content_type) == "text/csv"
+        Link.import(file_params, current_user)
+        flash[:notice] =  "Links imported."
+      else
+        flash[:danger] =  "File type not matched"
+      end
     else
       flash[:danger] = "Please specify file name."
     end

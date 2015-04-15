@@ -11,7 +11,7 @@
         <div class="spacer30"></div>
         <%= form_tag import_links_path, html:{ class: 'form-horizontal style-form'}, multipart: true do %>
           <div class="form-group">
-            <%= file_field_tag :file, class: 'form-control' %>
+            <%= file_field_tag :file, class: 'form-control', accept: '.csv' %>
           </div>
           <div class="form-group">
             <%= submit_tag "Import CSV", class: 'btn btn-primary' %>
