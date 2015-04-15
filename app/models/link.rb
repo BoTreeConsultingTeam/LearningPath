@@ -25,14 +25,16 @@ class Link < ActiveRecord::Base
 
   def self.import(file, current_user)
     CSV.foreach(file.path, headers: true) do |row|
-      Link.find_or_create(row.to_hash.merge!(user_id: current_user.id), current_user)
+      find_or_create(row.to_hash.merge!(user_id: current_user.id), current_user)
     end
   end
 
   def self.find_or_create(hash, current_user)
-     @link = Link.create! hash.except!('tag_list') unless Link.where('user_id = ? AND url = ?  ', current_user.id, hash['url'])
-     current_user.tag(@link, :with => hash['tag_list'], :on => :tags)
+    @link = self.where('user_id = ? AND url = ?  ', current_user.id, hash['url'])
+    if @link.empty?
+      without_taglist = hash.except('tag_list')
+      @link = self.create! without_taglist
+      current_user.tag(@link, :with => hash['tag_list'], :on => :tags)
+    end
   end
-
-
 end
