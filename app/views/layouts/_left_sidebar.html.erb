@@ -4,13 +4,13 @@
       <li class="mt">
         <%= nav_link_to root_path do %>
           <i class="fa fa-dashboard"></i>
-          <span> Links </span>
+          <span> Links (<%= links_count %>) </span>
         <% end %>
       </li>
       <li>
         <%= nav_link_to favourite_links_path do %>
           <i class="fa fa-heart"></i>
-          <span> Favourites </span>
+          <span> Favourites (<%= favourites_links_count%>) </span>
         <% end %>
       </li>
       <li>
