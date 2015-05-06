@@ -20,7 +20,7 @@ learning_statuses.each do |status|
 end
 puts 'Statuses created!!'
 
-link_types = ['Blog Post', 'Video', 'Podcast', 'Tutorial', 'Book']
+link_types = ['Blog Post', 'Video', 'Podcast', 'Tutorial', 'Book', 'Online Course', 'Email Course']
 link_types.each do |name|
   LinkType.create(name: name) unless LinkType.find_by_name(name)
 end

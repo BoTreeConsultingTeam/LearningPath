@@ -16,6 +16,10 @@ module LinksHelper
         "fa fa-bold"
       when 'Book'
         "fa fa-book"
+      when 'Online Course'
+        "fa fa-arrow-circle-up"
+      when 'Email Course'
+        "fa fa-envelope"
       else
         "fa fa-file-text"
     end
