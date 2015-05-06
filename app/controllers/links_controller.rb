@@ -15,6 +15,7 @@ class LinksController < ApplicationController
     end
     respond_to do |format|
       format.html
+      format.js
       format.csv { send_data to_csv(current_user) }
     end
   end
