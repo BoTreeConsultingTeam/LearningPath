@@ -176,3 +176,6 @@ a:focus, a:active {
     outline: none !important;
     text-decoration: none !important;
 }
+.s { font-size: 0.8em; }
+.m { font-size: 1.2em; }
+.l { font-size: 1.8em; }
