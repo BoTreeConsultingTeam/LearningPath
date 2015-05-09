@@ -14,4 +14,12 @@ class User < ActiveRecord::Base
   def self.get_all_link(user, date)
     user.links.where("created_at >= ?", date).group('date(created_at)').count
   end
+
+  def favourite_links
+    self.links.where(favourite: true)
+  end
+
+  def current_user_links
+    self.links
+  end
 end
