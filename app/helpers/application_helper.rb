@@ -1,9 +1,9 @@
 module ApplicationHelper
   def links_count
-    current_user.links.count
+    current_user.current_user_links.count
   end
 
-  def favourites_links_count
-    current_user.links.where(favourite: true).count
+  def favourite_links_count
+    current_user.favourite_links.count
   end
 end
