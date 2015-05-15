@@ -1,0 +1,40 @@
+<div class="row mt">
+  <div class="col-lg-10 col-md-10 col-sm-10">
+    <div class='form-panel mb'>
+
+      <h4>
+        <i class="fa fa-angle-right"></i>
+        Add more Contacts...
+        </h4>
+        <table class="table table-bordered">
+          <thead>
+          <th>Name</th>
+          <th>Email</th>
+          </thead>
+          <% all_contacts.each do |contact| %>
+            <tbody>
+            <td><%= contact.name%></td>
+            <td><%= contact.email%></td>
+            <td>
+              <%= link_to 'Add', add_member_path({ :contact_id => contact.id}), method: 'post'%>
+            </td>
+            </tbody>
+          <% end %>
+        </table>
+
+
+      </div>
+  </div>
+</div>
+<script>
+  var config = {
+    '.chosen-select'           : {},
+    '.chosen-select-deselect'  : {allow_single_deselect:true},
+    '.chosen-select-no-single' : {disable_search_threshold:10},
+    '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+    '.chosen-select-width'     : {width:"95%"}
+  }
+  for (var selector in config) {
+    $(selector).chosen(config[selector]);
+  }
+</script>

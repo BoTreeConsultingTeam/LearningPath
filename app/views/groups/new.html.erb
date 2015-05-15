@@ -1,16 +1,8 @@
 <section class="wrapper ">
   <h3>
     <i class="fa fa-angle-right"></i>
-    Contacts
+    Add Group
   </h3>
-
-  <div class='contact_form'>
-    <%= render partial: 'contacts/form', locals: {contact: @contact} %>
-  </div>
-
-  <% unless @contacts.blank? %>
-    <%= render partial: 'contacts/contact_list', locals: {contacts: @contacts} %>
-  <% end%>
 </section><!-- --/wrapper ---->
 
 <script>

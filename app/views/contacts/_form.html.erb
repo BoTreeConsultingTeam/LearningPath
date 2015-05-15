@@ -1,0 +1,48 @@
+<div class='contact_form'>
+  <div class="row mt ">
+    <div class="col-lg-10 col-md-10 col-sm-10">
+      <div class='form-panel mb '>
+        <%= form_for contact, html: { class: "form-horizontal style-form" } do |f|%>
+          <div class="form-group">
+            <div class="col-sm-12 col-sm-12">
+
+              <h4>
+                <i class="fa fa-angle-right"></i>
+                Create new Contact</h4>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <%= f.label :name, class: "col-sm-1 col-sm-1 control-label" do %>
+              Name
+              <span class="mandatory">*</span>
+            <% end %>
+            <div class="col-sm-11">
+              <%= f.text_field :name, class: 'form-control'%>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email, class: "col-sm-1 col-sm-1 control-label" do %>
+              Email
+              <span class="mandatory">*</span>
+            <% end %>
+            <div class="col-sm-11">
+              <%= f.email_field :email, class: 'form-control'%>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <span class="col-sm-1 col-sm-1 control-label" ></span>
+            <div class="col-sm-1 col-sm-1 control-label">
+              <%= f.submit :save, class: 'btn btn-success btn-md', data: {disable_with: 'Saving...'} %>
+            </div>
+            <div class="col-sm-1 col-sm-1 control-label">
+              <%= link_to "Cancel", root_path, class: 'btn btn-danger' %>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

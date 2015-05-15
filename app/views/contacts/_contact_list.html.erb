@@ -1,0 +1,32 @@
+<div class="row mt">
+  <div class="col-lg-10 col-md-10 col-sm-10">
+    <div class='form-panel mb'>
+      <h4>
+        <i class="fa fa-angle-right"></i>
+         Contacts
+      </h4>
+      <table class="table table-bordered">
+        <thead>
+        <th>Name</th>
+        <th>Email</th>
+        </thead>
+        <% contacts.each do |contact| %>
+          <tbody>
+          <td><%= contact.name%></td>
+          <td><%= contact.email%></td>
+          <td>
+          <%= link_to edit_contact_path(contact), remote: true, title:'Edit' do %>
+            <i><span class="fa fa-pencil"></span></i>
+          <% end %>
+          </td>
+          <td>
+          <%= link_to contact_path(contact), method: 'delete',data: { confirm: 'Are you sure? Do you want to delete?'}, title:'Delete' do %>
+            <i><span class="fa fa-trash-o"></span></i>
+          <% end %>
+          </td>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

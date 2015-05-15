@@ -19,9 +19,6 @@
 //= require chosen.proto
 //= require chosen.jquery
 //= require links.js
-//= require jquery.cookie
-//= require jquery.joyride-2.1
-//= require modernizr.mq
 //= require_tree .
 
 
@@ -36,16 +33,7 @@ $(document).ready(function() {
         });
       return $(window).scroll();
       }
-    $('#chooseID').joyride({
-      autoStart : true,
-      postStepCallback : function (index, tip) {
-        if (index == 2) {
-          $(this).joyride('set_li', false, 1);
-        }
-      },
-      modal:true,
-      expose: true
-    });
+
   var res_arr = [];
   $('.btn-group').click(function(){
         $('#'+this.id).toggleClass('open');

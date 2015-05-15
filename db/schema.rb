@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515071127) do
+ActiveRecord::Schema.define(version: 20150515131629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20150515071127) do
     t.datetime "updated_at"
   end
 
-  add_index "contacts_groups", ["contact_id", "group_id"], name: "index_contacts_groups_on_contact_id_and_group_id", using: :btree
+  add_index "contacts_groups", ["contact_id", "group_id"], name: "index_contacts_groups_on_contact_id_and_group_id", unique: true, using: :btree
 
   create_table "favourites", force: true do |t|
     t.integer  "user_id"
