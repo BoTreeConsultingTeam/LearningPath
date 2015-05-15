@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
   resources :tag
   resources :favourites
+  resources :groups
+  resources :contacts
   get 'learn_time/create/:link_id' => 'learn_time#create', as: :learn_time
   post 'links/list_selected' => 'links#list_selected'
   post 'links/remove_selected' => 'links#remove_selected'

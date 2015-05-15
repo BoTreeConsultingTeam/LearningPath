@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404073932) do
+ActiveRecord::Schema.define(version: 20150515071127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,24 @@ ActiveRecord::Schema.define(version: 20150404073932) do
     t.string   "icon"
   end
 
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts_groups", force: true do |t|
+    t.integer  "contact_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contacts_groups", ["contact_id", "group_id"], name: "index_contacts_groups_on_contact_id_and_group_id", using: :btree
+
   create_table "favourites", force: true do |t|
     t.integer  "user_id"
     t.integer  "link_id"
@@ -31,6 +49,13 @@ ActiveRecord::Schema.define(version: 20150404073932) do
   end
 
   add_index "favourites", ["user_id", "link_id"], name: "favourites_index", unique: true, using: :btree
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "learn_times", force: true do |t|
     t.datetime "created_at"
