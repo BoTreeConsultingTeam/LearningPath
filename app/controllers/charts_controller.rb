@@ -10,7 +10,7 @@ class ChartsController < ApplicationController
     data_table.new_column('number', 'Add Count')
 
     @chart_by_learn = LearnTime.report_of_learn_time(current_user.id, @date)
-    @total_links = User.get_all_link(current_user, @date)
+    @total_links = current_user.total_links_after(@date)
 
     all = ((Date.today-30)..Date.today).inject([]) do |all, date |
       learn_count = @chart_by_learn[date] || 0

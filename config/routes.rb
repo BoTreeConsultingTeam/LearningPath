@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :tag
   resources :favourites
   get 'learn_time/create/:link_id' => 'learn_time#create', as: :learn_time
-
+  post 'links/list_selected' => 'links#list_selected'
+  post 'links/remove_selected' => 'links#remove_selected'
+  post '/links/send_links' => 'links#send_links'
   get 'charts/chart_by_learn(/:days)' => 'charts#chart_by_learn', as: :chart_by_learn
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

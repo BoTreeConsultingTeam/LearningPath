@@ -1,3 +1,14 @@
+<div class="showback hide_me sender">
+  <%= link_to "javascript:void(0)" do %>
+    <i class="fa fa-share-alt send_btn"></i>
+    <span>Share |</span>
+  <% end %>
+  <%= link_to "javascript:void(0)" do %>
+    <i class="fa fa-trash-o dlt_btn"></i>
+    <span>Remove</span>
+  <% end %>
+</div>
+
 <% @links.each do |link| %>
   <div class="showback" >
     <div class="left"><i title= "<%= link.link_type.name %>" class='<%= "#{set_category_icon(link)}" %>'></i><br/>
@@ -6,12 +17,17 @@
       </span><br>
       <i id="fav_<%=link.id %>">
         <%= render :partial => 'favourite_btn', :locals => {link: link} %>
-      </i>
-    </div><p>
-    <%= link_to "#{link.title}", link.url, target: '_blank'%></p>
+      </i><br>
+      <%= check_box_tag '', link.id, false, { class: 'cb_select pull-left' } %>
+    </div>
+
+    <p>
+      <%= link_to "#{link.title}", link.url, target: '_blank'%>
+    </p>
     <span class="pull-right">
       <%= image_tag link.category.icon, title: link.category.name, height: '22px', width:'20px' if link.category.present? %>
     </span>
+
     <div class="description">
       <div class="truncate_desc<%=link.id%>"><%= truncate(simple_format(link.description), length: 200, escape: false) {link_to "More", 'javascript:void(0)', id: "#{link.id}", class:"view_desc_more view_toggle_font" } %></div>
       <div class=" truncate_desc_show<%=link.id%> hide_me"><%= simple_format(link.description)%><%= link_to "Less", 'javascript:void(0)', id: "#{link.id}", class:"view_desc_less #{link.id} view_toggle_font" %></div>
@@ -35,22 +51,3 @@
     </div>
   </div><!-- /showback -->
 <% end %>
-
-
-<script>
-  $('.btn-group').click(function(){
-       $('#'+this.id).toggleClass('open');
-      }
-  )
-  $('.view_desc_more').click(function () {
-    $('.truncate_desc'+this.id).toggleClass('hide_me');
-    $('.truncate_desc_show'+this.id).toggleClass('show_me');
-    var v = $( ".truncate_desc_show"+this.id).find("p");
-    v.append($('.'+this.id));
-//    alert(v);
-  })
-  $('.view_desc_less').click(function () {
-    $('.truncate_desc'+this.id).toggleClass('hide_me');
-    $('.truncate_desc_show'+this.id).toggleClass('show_me');
-  })
-</script>

@@ -48,4 +48,8 @@ module LinksHelper
   def favourite_action_tooltip(link)
     "#{link.favourite? ? 'Unmark ' : 'Mark'} as Favourite"
   end
+
+  def user_tags
+    current_user.user_tag_cloud
+  end
 end

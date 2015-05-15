@@ -1,5 +1,5 @@
 <section class="wrapper">
-  <div class="row mt">
+  <div class="row mt selected_link_list">
     <% if @links.blank? %>
       <div class="no_links_msg">You do not have anything to display at this time. <%= link_to 'Start saving one now!', new_link_path%></div>
     <% else %>
@@ -7,7 +7,7 @@
         <%= render partial: 'links/links_list', locals: { links: @links}%>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 showback tag-cloud-width">
-          <% tag_cloud Link.tag_counts, %w{s m l} do |tag, css_class| %>
+          <% tag_cloud user_tags, %w{s m l} do |tag, css_class| %>
             <%= link_to tag.name, links_path(tag: tag.name), class: css_class %>
           <% end %>
       </div>

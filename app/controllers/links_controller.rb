@@ -74,7 +74,28 @@ class LinksController < ApplicationController
     redirect_to root_url
   end
 
+  def list_selected
+    id_arr = params['link_ids'].map(&:to_i)
+    @links = []
+    @links = Link.find(id_arr)
+    respond_to do |format|
+      format.js
+    end
+  end
 
+  def remove_selected
+    id_arr = params['link_ids']
+    Link.destroy(id_arr)
+    flash[:success] =  "Links Removed."
+    respond_to do |format|
+      format.js { redirect_to links_path }
+    end
+  end
+
+  def send_links
+    # to be implement
+  end
+  
   private
     def link_params
       params.require(:link).permit(:title, :url, :learning_status_id, :description, :category_id, :user_id,  :link_type_id, :tag_list => [])

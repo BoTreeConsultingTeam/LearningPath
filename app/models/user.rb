@@ -11,15 +11,15 @@ class User < ActiveRecord::Base
   has_many :links
   has_many :learn_time
 
-  def self.get_all_link(user, date)
-    user.links.where("created_at >= ?", date).group('date(created_at)').count
+  def total_links_after(date)
+    links.where("created_at >= ?", date).group('date(created_at)').count
   end
 
   def favourite_links
-    self.links.where(favourite: true)
+    links.where(favourite: true)
   end
 
-  def current_user_links
-    self.links
+  def user_tag_cloud
+    owned_tags
   end
 end
