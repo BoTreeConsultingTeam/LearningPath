@@ -20,6 +20,22 @@ class LinksController < ApplicationController
     end
   end
 
+  def sort_links
+    case
+    when params[:added_on]
+      @links = current_user_links.order_by_created_at
+    when params[:updated_on]
+      @links = current_user_links.order_by_updated_at
+    when params[:recently_learned]
+      @links = current_user.user_learned_links
+    when params[:learn_count]
+      link_ids = current_user.learn_time.group_by(&:link_id).map {|link| [link.first, link.last.count] }.sort_by(&:last).reverse.map{|link| link.first}
+      @links = Link.find(link_ids).index_by(&:id).values_at(*link_ids)
+    end
+  end
+
+
+
   def new
     @link = Link.new
   end

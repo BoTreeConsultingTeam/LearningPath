@@ -11,15 +11,19 @@ class User < ActiveRecord::Base
   has_many :links
   has_many :learn_time
 
-  def self.get_all_link(user, date)
-    user.links.where("created_at >= ?", date).group('date(created_at)').count
+  def links_till( date)
+    links.where("created_at >= ?", date).group('date(created_at)').count
   end
 
   def favourite_links
     self.links.where(favourite: true)
   end
 
-  def current_user_links
-    self.links
+  def user_learned_links
+    learn_time.order(:created_at => :desc).map { |link| link.link }.uniq
+  end
+
+  def user_learn_count_till(date)
+    learn_time.where("created_at >= ?", date).group('date(created_at)').count
   end
 end

@@ -11,9 +11,9 @@ class Link < ActiveRecord::Base
   belongs_to :learning_status
   belongs_to :link_type
 
-  def self.learn_time(user)
-    LearnTime.create!(user_id: user.id, link_id: self.id)
-  end
+  scope :order_by_created_at, -> { order(:created_at => :asc) }
+
+  scope :order_by_updated_at, -> { order(:updated_at => :asc) }
 
   def create_favourite(user_id, link_id)
     favourites.create!(user_id: user_id, link_id: link_id)
