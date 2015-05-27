@@ -1,0 +1,10 @@
+<h4>Select By Contact</h4>
+<ul>
+  <% contacts.each do |contact| %>
+    <li>
+      <%= check_box_tag "contact_#{contact.id}", contact.id, false%>
+      <%= h contact.name %>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate contacts%>

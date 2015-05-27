@@ -1,0 +1,65 @@
+<div class="select_contact">
+    <%= check_box_tag 'by_contact', id: 'by_contact', :data => { 'state' => true, 'label-text' => 'Share','on-text' => 'By Contact', 'off-text' =>'By Group' } %>
+</div>
+
+<div class="by_contacts hide_me">
+  <h4>Select By Contact</h4>
+  <ul>
+    <% contacts.each do |contact| %>
+      <li>
+        <%= check_box_tag "contact_#{contact.id}", contact.id, false, class: ' contact_cb'%>
+        <%= h contact.name %>
+      </li>
+    <% end %>
+  </ul>
+  <%= will_paginate contacts%>
+</div>
+
+<div class="by_groups">
+  <h4>Select By Group</h4>
+  <ul>
+    <% groups.each do |group| %>
+      <li>
+        <%= check_box_tag 'group_ids[]', group.id,false%>
+        <%= h group.name %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $("[name='by_contact']").bootstrapSwitch();
+  $('#by_contact').bootstrapSwitch('onText', 'contact');
+  $('#by_contact').bootstrapSwitch('labelText', 'ShareBy');
+  $('#by_contact').bootstrapSwitch('offText', 'Group');
+  $('#by_contact').bootstrapSwitch('onColor', 'info');
+  $('#by_contact').bootstrapSwitch('offColor', 'success');
+  $('#by_contact').on('switchChange.bootstrapSwitch', function(event, state) {
+    if (state == true){
+      $(".by_contacts").addClass('show_me');
+      $(".by_groups").addClass('hide_me');
+    }
+    else {
+      $(".by_contacts").removeClass('show_me');
+      $(".by_groups").removeClass('hide_me');
+    };
+  });
+  var res_arr = [];
+  $('.contact_cb:checkbox').click(function() {
+    var $this = $(this);
+    if ($this.is(':checked')) {
+      res_arr.push($this.val());
+    } else {
+      res_arr.pop($this.val());
+    }
+
+    if(res_arr.length > 0){
+      $('.sender').fadeIn( "slow");
+    }else{
+      $('.sender').fadeOut( "slow");
+    }
+//    return res_arr;
+    alert(res_arr);
+  });
+
+</script>

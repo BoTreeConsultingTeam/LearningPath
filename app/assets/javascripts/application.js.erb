@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require bootstrap
+//= require bootstrap-switch.min
 //= require chosen.proto
 //= require chosen.jquery
 //= require links.js
@@ -38,17 +39,17 @@ $(document).ready(function() {
   $('.btn-group').click(function(){
         $('#'+this.id).toggleClass('open');
       }
-  )
+  );
   $('.view_desc_more').click(function () {
     $('.truncate_desc'+this.id).toggleClass('hide_me');
     $('.truncate_desc_show'+this.id).toggleClass('show_me');
     var v = $( ".truncate_desc_show"+this.id).find("p");
     v.append($('.'+this.id));
-  })
+  });
   $('.view_desc_less').click(function () {
     $('.truncate_desc'+this.id).toggleClass('hide_me');
     $('.truncate_desc_show'+this.id).toggleClass('show_me');
-  })
+  });
   $('.cb_select:checkbox').click(function() {
     var $this = $(this);
     if ($this.is(':checked')) {
@@ -83,5 +84,22 @@ $(document).ready(function() {
     } ).done(function(){
     })
   });
+  var res_arr = [];
+  $('.contact_cb:checkbox').click(function() {
+    var $this = $(this);
+    if ($this.is(':checked')) {
+      res_arr.push($this.val());
+    } else {
+      res_arr.pop($this.val());
+    }
 
+    if(res_arr.length > 0){
+      $('.sender').fadeIn( "slow");
+    }else{
+      $('.sender').fadeOut( "slow");
+    }
+//
+    alert(res_arr);
+    return res_arr;
+  });
   });

@@ -77,7 +77,12 @@ class LinksController < ApplicationController
   def list_selected
     id_arr = params['link_ids'].map(&:to_i)
     @links = []
-    @links = Link.find(id_arr)
+    @links = current_user.links
+    @contacts = current_user.contacts.paginate(:page       => params[:page],
+                                               :per_page   => 10,
+    )
+
+    @groups = current_user.groups
     respond_to do |format|
       format.js
     end
@@ -93,9 +98,17 @@ class LinksController < ApplicationController
   end
 
   def send_links
+    LinkMailer.share_by_email(params[:name], 'hi this is my subject').deliver
+    redirect_to links_path
     # to be implement
   end
-  
+
+  def final_sender
+    @links = current_user.links
+    @contact_emails = Contact.find(params[:contact_ids]).map{|c|c.email}
+    LinkMailer.share_by_email(@links, @contact_emails, 'hi this is my subject').deliver
+    redirect_to links_path
+  end
   private
     def link_params
       params.require(:link).permit(:title, :url, :learning_status_id, :description, :category_id, :user_id,  :link_type_id, :tag_list => [])

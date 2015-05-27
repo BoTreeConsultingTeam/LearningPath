@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   post 'groups/add_member/:id' => 'groups#add_member', as: :add_member
   post 'groups/remove_member' => 'groups#remove_member', as: :remove_member
-
+  post 'links/final_sender' => 'links#final_sender', as: :final_sender
   post 'links/toggle' => 'favourites#toggle', :as => :toggle_favourite
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords'}
 end

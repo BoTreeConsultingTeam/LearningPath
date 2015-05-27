@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<h1>Links</h1>
+<p>
+  <section class="wrapper">
+    puts @links
+    <% @links.each do |link| %>
+      <div class="showback" >
+        <div class="left">
+
+        </div>
+        <p>
+          <%= link_to "#{link.title}", link.url, target: '_blank'%>
+        </p>
+
+        <div class="description">
+          <div class="truncate_desc<%=link.id%>"><%= truncate(simple_format(link.description), length: 200, escape: false) {link_to "More", 'javascript:void(0)', id: "#{link.id}", class:"view_desc_more view_toggle_font" } %></div>
+
+        </div><br/>
+        <div>
+          <div class="tag"></div>
+          <div class="btn-group btn-link-menu" id="<%="btn_group#{link.id}"%>"></div>
+        </div>
+      </div><!-- /showback -->
+    <% end %>
+  </section>
+</p>
+</body>
+</html>
