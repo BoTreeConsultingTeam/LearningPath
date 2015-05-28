@@ -6,12 +6,6 @@
   <div>
     <ul class="nav pull-right top-menu">
       <% if current_user %>
-        <% if params[:controller] == 'links' && params[:action] == 'index' %>
-          <li><%= link_to 'Added On', sort_links_path(added_on: 'added_on'), remote: true, class: 'sort_links' %></li>
-          <li><%= link_to 'Updated On', sort_links_path(updated_on: 'updated_on'), remote: true, class: 'sort_links' %></li>
-          <li><%= link_to 'Recently Learned', sort_links_path(recently_learned: 'recently_learned'), remote: true, class: 'sort_links' %></li>
-          <li><%= link_to 'Learn Count', sort_links_path(learn_count: 'learn_count'), remote: true, class: 'sort_links' %></li>
-        <% end %>
         <li><%= link_to 'Profile', edit_user_registration_path(@current_user), class: 'logout' %></li>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout' %></li>
       <% end %>

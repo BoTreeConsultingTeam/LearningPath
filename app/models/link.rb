@@ -11,9 +11,9 @@ class Link < ActiveRecord::Base
   belongs_to :learning_status
   belongs_to :link_type
 
-  scope :order_by_created_at, -> { order(:created_at => :asc) }
+  scope :order_by_created_at, -> { order(:created_at => :desc) }
 
-  scope :order_by_updated_at, -> { order(:updated_at => :asc) }
+  scope :order_by_updated_at, -> { order(:updated_at => :desc) }
 
   def create_favourite(user_id, link_id)
     favourites.create!(user_id: user_id, link_id: link_id)

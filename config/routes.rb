@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'links#index'
   get 'links/favourites' => 'links#favourites', as: :favourite_links
   get 'links/import_form' => 'links#import_form', as: :links_import_form
-  get 'links/sort_links' => 'links#sort_links', as: :sort_links
+  post 'links/sort_links' => 'links#sort_links', as: :sort_links
 
   resources :links do
     collection { post :import }
