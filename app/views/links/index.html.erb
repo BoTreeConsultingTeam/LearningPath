@@ -12,7 +12,7 @@
           <% end %>
       </div>
       <div class="link_pagination">
-        <%= will_paginate @links %>
+        <%= will_paginate @links || @search_list %>
       </div>
     <% end %>
   </div>
