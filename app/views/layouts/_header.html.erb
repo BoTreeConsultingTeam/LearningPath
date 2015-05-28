@@ -4,7 +4,7 @@
   </div>
   <%= link_to 'Learning Path', root_path, class: 'logo' %>
   <div class="search_bar">
-    <%= form_tag '/links/search', remote: true, id: 'search' do %>
+    <%= form_tag links_search_path, remote: true, id: 'search' do %>
         <%= text_field_tag 'search_string', nil, class: 'search_box' %>
         <button class='fa fa-search search_button' style='width:40px;'>
         </button>

@@ -29,9 +29,6 @@ class LinksController < ApplicationController
     current_user.tag(@link, :with => link_params[:tag_list], :on => :tags)
 
     if @link.save
-      pg_searchable = @link.pg_search_document
-      pg_searchable.searchable
-
       redirect_to root_path
       flash[:success] = "You have created it successfully"
     else

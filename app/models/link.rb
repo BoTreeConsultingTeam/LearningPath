@@ -41,8 +41,6 @@ class Link < ActiveRecord::Base
     if @link.empty?
       without_taglist = hash.except('tag_list')
       @link = self.create! without_taglist
-      pg_searchable = @link.pg_search_document
-      pg_searchable.searchable
       current_user.tag(@link, :with => hash['tag_list'], :on => :tags)
     end
   end
