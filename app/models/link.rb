@@ -1,5 +1,12 @@
 require 'csv'
 class Link < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [:title, :description]
+
+  pg_search_scope :search, against: [:title, :description],
+                  associated_against: { link_type: :name, category: :name },
+                  using: { tsearch: { prefix: true } }
+
   self.per_page = 20
   acts_as_taggable
   validates :title, presence: true
@@ -34,6 +41,8 @@ class Link < ActiveRecord::Base
     if @link.empty?
       without_taglist = hash.except('tag_list')
       @link = self.create! without_taglist
+      pg_searchable = @link.pg_search_document
+      pg_searchable.searchable
       current_user.tag(@link, :with => hash['tag_list'], :on => :tags)
     end
   end
