@@ -9,9 +9,9 @@ class LinksController < ApplicationController
   def index
     selected_tag = params[:tag]
     if selected_tag
-      @links = current_user_links.tagged_with(selected_tag).order(:created_at => :desc).paginate(page: page)
+      @links = current_user_links.tagged_with(selected_tag).order(created_at: :desc).paginate(page: page)
     else
-      @links = current_user_links.order(:created_at => :desc).paginate(page: page)
+      @links = current_user_links.order(created_at: :desc).paginate(page: page)
     end
     respond_to do |format|
       format.html
@@ -42,7 +42,7 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params.merge({ user_id: current_user.id }).except!(:tag_list))
-    current_user.tag(@link, :with => link_params[:tag_list], :on => :tags)
+    current_user.tag(@link, with: link_params[:tag_list], on: :tags)
 
     if @link.save
       redirect_to root_path
@@ -59,7 +59,7 @@ class LinksController < ApplicationController
   def update
     if @link.present?
       @link.update(link_params.merge({user_id: current_user.id}).except!(:tag_list))
-      current_user.tag(@link, :with => link_params[:tag_list], :on => :tags)
+      current_user.tag(@link, with: link_params[:tag_list], on: :tags)
       flash[:success] = 'Successfully Updated!!'
       redirect_to root_path
     else
@@ -76,7 +76,7 @@ class LinksController < ApplicationController
   end
 
   def favourites
-    @links = current_user.links.where(favourite: true).order(:created_at => :desc).paginate(page: page)
+    @links = current_user.links.where(favourite: true).order(created_at: :desc).paginate(page: page)
     render 'links/index'
   end
 
@@ -93,7 +93,7 @@ class LinksController < ApplicationController
 
   private
     def link_params
-      params.require(:link).permit(:title, :url, :learning_status_id, :description, :category_id, :user_id,  :link_type_id, :tag_list => [])
+      params.require(:link).permit(:title, :url, :learning_status_id, :description, :category_id, :user_id,  :link_type_id, tag_list: [])
     end
 
     def assign_link

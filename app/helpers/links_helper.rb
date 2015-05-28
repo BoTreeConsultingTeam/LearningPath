@@ -1,6 +1,12 @@
 module LinksHelper
   include ActsAsTaggableOn::TagsHelper
 
+  SORT_OPTIONS = ['Added On', 'Updated On', 'Recently Learned', 'Learn Count' ]
+
+  def options_for_sorting
+    options_for_select(SORT_OPTIONS)
+  end
+
   def is_favourite_link?(link)
     link.favourite
   end
