@@ -1,5 +1,12 @@
 require 'csv'
 class Link < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [:title, :description]
+
+  pg_search_scope :search, against: [:title, :description, :created_at, :updated_at],
+                  associated_against: { link_type: :name, category: :name, learn_time: :created_at },
+                  using: { tsearch: { prefix: true } }
+
   self.per_page = 20
   acts_as_taggable
   validates :title, presence: true

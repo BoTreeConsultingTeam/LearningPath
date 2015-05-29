@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404073932) do
+ActiveRecord::Schema.define(version: 20150529072429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,19 @@ ActiveRecord::Schema.define(version: 20150404073932) do
     t.integer  "category_id"
     t.integer  "learning_status_id", default: 1
     t.integer  "link_type_id"
+    t.datetime "last_learned_at"
+    t.integer  "learn_times_count",  default: 0
   end
+
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["searchable_id", "searchable_type"], name: "index_pg_search_documents_on_searchable_id_and_searchable_type", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

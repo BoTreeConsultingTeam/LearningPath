@@ -4,7 +4,8 @@
       <div class="no_links_msg">You do not have anything to display at this time. <%= link_to 'Start saving one now!', new_link_path%></div>
     <% else %>
       <div class="col-lg-8 col-md-8 col-sm-8" id="links-list">
-        <%= form_tag sort_links_path, remote: true, id: 'sorting_form' do %>
+        <%= form_tag sort_links_path, remote: true, method: :get,  id: 'sorting_form' do %>
+          <%= hidden_field_tag :search_string, '', class: 'search_field_val' %>
           <%= select_tag :sort_by, options_for_sorting, class: "select_box" %>
         <% end %>
         <div class="links">
@@ -26,6 +27,7 @@
   $(document).ready(function(){
     $('.select_box').change(function(){
         $('#sorting_form').submit();
+        $('.links').empty();
     });
   });
 </script>

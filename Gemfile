@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
+gem 'pg_search'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'acts-as-taggable-on'
 gem 'google_visualr'

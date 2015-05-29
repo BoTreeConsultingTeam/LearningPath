@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class LinksController < ApplicationController
   before_filter :authenticate_user!
   before_filter :assign_link, only: [:update, :destroy, :edit]
@@ -23,14 +24,13 @@ class LinksController < ApplicationController
   def sort_links
     case params[:sort_by]
     when 'Added On'
-      @links = current_user_links.order_by_created_at
+      @sorted_links = params[:search_string].empty? ? current_user_links.order_by_created_at.paginate(page: page) : search_list.reorder('created_at DESC').paginate(page: page)
     when 'Updated On'
-      @links = current_user_links.order_by_updated_at
+      @sorted_links = params[:search_string].empty? ? current_user_links.order_by_updated_at.paginate(page: page) : search_list.reorder('updated_at DESC').paginate(page: page)
     when 'Recently Learned'
-      @links = current_user.user_learned_links
+      @sorted_links = params[:search_string].empty? ? current_user.user_learned_links.paginate(page: page) : search_list.reorder('last_learned_at DESC').reject{|link| link.last_learned_at.nil? }.paginate(page: page)
     when 'Learn Count'
-      link_ids = current_user.learn_time.group_by(&:link_id).map {|link| [link.first, link.last.count] }.sort_by(&:last).reverse.map{|link| link.first}
-      @links = Link.find(link_ids).index_by(&:id).values_at(*link_ids)
+      @sorted_links = params[:search_string].empty? ? @current_user_links.sort_by{ |link| link.learn_time.count }.reverse.paginate(page: page) : search_list.reorder('learn_times_count DESC').paginate(page: page)
     end
   end
 
@@ -90,6 +90,14 @@ class LinksController < ApplicationController
     redirect_to root_url
   end
 
+  def search
+    @search_list = params[:search_string].empty? ? current_user_links.order(:created_at => :desc).paginate(page: page) :
+                                                    search_list.paginate(page: page)
+  end
+
+  def search_list
+    Link.search(params[:search_string])
+  end
 
   private
     def link_params
