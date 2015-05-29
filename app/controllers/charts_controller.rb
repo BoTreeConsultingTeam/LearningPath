@@ -47,7 +47,7 @@ class ChartsController < ApplicationController
     end
 
     def chart_options
-      @chart_options = { :width => 450, :height => 400, :title => '', :legend => 'bottom' }
+      @chart_options = { width: 450, height: 400, title: '', legend: 'bottom' }
     end
 
 end

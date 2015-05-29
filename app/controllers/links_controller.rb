@@ -91,7 +91,7 @@ class LinksController < ApplicationController
   end
 
   def search
-    @search_list = params[:search_string].empty? ? current_user_links.order(:created_at => :desc).paginate(page: page) :
+    @search_list = params[:search_string].empty? ? current_user_links.order(created_at: :desc).paginate(page: page) :
                                                     search_list.paginate(page: page)
   end
 

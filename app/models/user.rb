@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   end
 
   def user_learned_links
-    learn_time.order(:created_at => :desc).map { |link| link.link }.uniq
+    learn_time.order(created_at: :desc).map { |link| link.link }.uniq
   end
 
   def user_learn_count_till(date)
