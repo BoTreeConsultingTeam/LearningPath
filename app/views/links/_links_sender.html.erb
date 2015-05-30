@@ -1,12 +1,10 @@
+<%= javascript_include_tag 'links' %>
 <section class="wrapper">
-  <%= form_tag '/links/send_links' do %>
-    <%= email_field_tag :name %>
-    <%= submit_tag :submi %>
-
-  <% end %>
-  <%= button_tag "test", class:'my_modal'%>
+  <%= button_tag "Send", class:'my_modal btn btn-primary'%>
+  <div class="spacer20"></div>
   <div id="myModal" class="modal fade">
     <div class="modal-dialog">
+      <%= hidden_field_tag :selected_links, :value => id_arr %>
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -19,13 +17,13 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary contact_select">Save changes</button>
+          <button type="button" class="btn btn-primary contact_select">Send</button>
         </div>
       </div>
     </div>
   </div>
 
-  <% links.each do |link| %>
+  <% selected_links.each do |link| %>
     <div class="showback" >
       <div class="left">
         <i title= "<%= link.link_type.name %>" class='<%= "#{set_category_icon(link)}" %>'></i><br/>
@@ -45,21 +43,3 @@
     </div><!-- /showback -->
   <% end %>
 </section>
-
-<script type="text/javascript">
-
-  $('.my_modal').click(function () {
-    $("#myModal").modal('show');
-  });
-
-  $('.contact_select').click(function(){
-    alert(res_arr );
-    $.ajax({
-      type: "POST",
-      url: "links/final_sender",
-      data: {contact_ids: res_arr}
-    } ).done(function(){
-
-    })
-  });
-</script>

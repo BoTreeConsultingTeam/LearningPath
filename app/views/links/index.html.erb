@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'links' %>
 <section class="wrapper">
   <div class="row mt selected_link_list">
     <% if @links.blank? %>
@@ -12,7 +13,7 @@
           <% end %>
       </div>
       <div class="link_pagination">
-        <%= will_paginate @links %>
+        <%= will_paginate @links || @search_list %>
       </div>
     <% end %>
   </div>

@@ -75,9 +75,8 @@ class LinksController < ApplicationController
   end
 
   def list_selected
-    id_arr = params['link_ids'].map(&:to_i)
-    @links = []
-    @links = current_user.links
+    @id_arr = params['link_ids'].map(&:to_i)
+    @selected_links = Link.find(@id_arr)
     @contacts = current_user.contacts.paginate(:page       => params[:page],
                                                :per_page   => 10,
     )
@@ -89,7 +88,7 @@ class LinksController < ApplicationController
   end
 
   def remove_selected
-    id_arr = params['link_ids']
+    id_arr = params['links']
     Link.destroy(id_arr)
     flash[:success] =  "Links Removed."
     respond_to do |format|
@@ -104,7 +103,8 @@ class LinksController < ApplicationController
   end
 
   def final_sender
-    @links = current_user.links
+    @id_arr = eval(params['links'])[:value]
+    @links = Link.find(@id_arr)
     @contact_emails = Contact.find(params[:contact_ids]).map{|c|c.email}
     LinkMailer.share_by_email(@links, @contact_emails, 'hi this is my subject').deliver
     redirect_to links_path

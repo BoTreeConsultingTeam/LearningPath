@@ -1,1 +1,1 @@
-$('.selected_link_list').replaceWith('<%= escape_javascript(render partial: 'links_sender', locals: { links: @links, contacts: @contacts, groups: @groups})%>');
+$('.selected_link_list').replaceWith('<%= escape_javascript(render partial: 'links_sender', locals: { selected_links: @selected_links, contacts: @contacts, groups: @groups, id_arr: @id_arr})%>');
