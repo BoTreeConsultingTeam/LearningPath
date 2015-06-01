@@ -183,3 +183,7 @@ a:focus, a:active {
 .tag-cloud-width{
     width: 32% !important;
 }
+.modal .modal-body {
+    max-height: 420px !important;
+    overflow-y: auto !important;
+}

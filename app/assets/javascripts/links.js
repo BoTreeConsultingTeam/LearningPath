@@ -48,7 +48,6 @@ $(document).ready(function() {
     });
 
     $('.send_btn').click(function(){
-        alert(res_arr);
         $.ajax({
             type: "POST",
             url: "links/list_selected",
