@@ -21,7 +21,7 @@ class LinksController < ApplicationController
     end
   end
 
-  def sort_links
+  def sort
     case params[:sort_by]
     when 'Added On'
       @sorted_links = search_string_is_empty? ? current_user_links.order_by_created_at :
@@ -33,7 +33,7 @@ class LinksController < ApplicationController
       @sorted_links = search_string_is_empty? ? current_user.user_learned_links :
           search_list.reorder('last_learned_at DESC').reject{|link| link.last_learned_at.nil? }
     when 'Learn Count'
-      @sorted_links = search_string_is_empty? ? current_user_links.sort_by{ |link| link.learn_time.count }.reverse :
+      @sorted_links = search_string_is_empty? ? current_user_links.sort_by{ |link| link.learn_times.count }.reverse :
           search_list.reorder('learn_times_count DESC')
     end
     @sorted_links = @sorted_links.paginate(page: page)

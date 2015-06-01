@@ -44,7 +44,7 @@ module LinksHelper
   end
   
   def learning_count(link)
-    link.learn_time.count
+    link.learn_times.count
   end
 
   def set_tooltip_on_count(number)

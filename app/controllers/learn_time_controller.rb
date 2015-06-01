@@ -11,7 +11,4 @@ class LearnTimeController < ApplicationController
     end
   end
 
-  def index
-    @links = current_user.learn_time
-  end
 end

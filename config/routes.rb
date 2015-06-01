@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
   root 'links#index'
-  get 'links/favourites' => 'links#favourites', as: :favourite_links
-  get 'links/import_form' => 'links#import_form', as: :links_import_form
-  get 'links/sort_links' => 'links#sort_links', as: :sort_links
-  get 'links/search' => 'links#search', as: :search_links
+
   resources :links do
-    collection { post :import }
+    collection do
+      post :import
+      get :favourites
+      get :import_form
+      get :sort
+      get :search
+    end
   end
   resources :tag
   resources :favourites

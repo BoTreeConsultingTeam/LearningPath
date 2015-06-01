@@ -4,7 +4,7 @@ class Link < ActiveRecord::Base
   multisearchable against: [:title, :description]
 
   pg_search_scope :search, against: [:title, :description, :created_at, :updated_at],
-                  associated_against: { link_type: :name, category: :name, learn_time: :created_at },
+                  associated_against: { link_type: :name, category: :name, learn_times: :created_at },
                   using: { tsearch: { prefix: true } }
 
   self.per_page = 20
@@ -13,7 +13,7 @@ class Link < ActiveRecord::Base
   validates :url, format: { with: URI::regexp(%w(http https)) }
   has_many :favourites
   belongs_to :user
-  has_many :learn_time
+  has_many :learn_times
   belongs_to :category
   belongs_to :learning_status
   belongs_to :link_type
