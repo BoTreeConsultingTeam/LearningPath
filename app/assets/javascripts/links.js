@@ -96,6 +96,22 @@ $(document).ready(function() {
         }
         return group_res_arr;
     });
+    $("[name='by_contact']").bootstrapSwitch();
+    $('#by_contact').bootstrapSwitch('onText', 'contact');
+    $('#by_contact').bootstrapSwitch('labelText', 'ShareBy');
+    $('#by_contact').bootstrapSwitch('offText', 'Group');
+    $('#by_contact').bootstrapSwitch('onColor', 'info');
+    $('#by_contact').bootstrapSwitch('offColor', 'success');
+    $('#by_contact').on('switchChange.bootstrapSwitch', function(event, state) {
+        if (state == true){
+            $(".by_contacts").addClass('show_me');
+            $(".by_groups").addClass('hide_me');
+        }
+        else {
+            $(".by_contacts").removeClass('show_me');
+            $(".by_groups").removeClass('hide_me');
+        };
+    });
 });
 
 
