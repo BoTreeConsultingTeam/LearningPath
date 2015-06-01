@@ -82,6 +82,9 @@ class LinksController < ApplicationController
     respond_to do |format|
       format.js
     end
+
+  def search
+    @search_list = params[:search_string].empty? ? current_user_links.order(:created_at => :desc).paginate(page: page) : Link.search(params[:search_string]).paginate(page: page)
   end
 
   def remove_selected

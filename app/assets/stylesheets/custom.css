@@ -183,7 +183,31 @@ a:focus, a:active {
 .tag-cloud-width{
     width: 32% !important;
 }
+
 .modal .modal-body {
     max-height: 420px !important;
     overflow-y: auto !important;
+}
+
+#search {
+    width: 250px;
+    float: left;
+}
+
+.search_box {
+    width: 200px;
+    float: left;
+}
+
+.search_bar {
+    margin-left: 300px;
+    margin-top: 15px;
+    width: 250px;
+    float: left;
+}
+
+.search_button{
+    background-color: transparent;
+    border: none;
+    margin-left: -5px;
 }
