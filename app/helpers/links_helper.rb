@@ -1,7 +1,7 @@
 module LinksHelper
   include ActsAsTaggableOn::TagsHelper
 
-  SORT_OPTIONS = ['Added On', 'Updated On', 'Recently Learned', 'Learn Count' ]
+  SORT_OPTIONS = ['Added On', 'Updated On', 'Recently Learned', 'Learn Count']
 
   def options_for_sorting
     options_for_select(SORT_OPTIONS)

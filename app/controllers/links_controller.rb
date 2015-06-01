@@ -24,17 +24,20 @@ class LinksController < ApplicationController
   def sort_links
     case params[:sort_by]
     when 'Added On'
-      @sorted_links = params[:search_string].empty? ? current_user_links.order_by_created_at.paginate(page: page) : search_list.reorder('created_at DESC').paginate(page: page)
+      @sorted_links = search_string_is_empty? ? current_user_links.order_by_created_at :
+          search_list.reorder('created_at DESC')
     when 'Updated On'
-      @sorted_links = params[:search_string].empty? ? current_user_links.order_by_updated_at.paginate(page: page) : search_list.reorder('updated_at DESC').paginate(page: page)
+      @sorted_links = search_string_is_empty? ? current_user_links.order_by_updated_at :
+          search_list.reorder('updated_at DESC')
     when 'Recently Learned'
-      @sorted_links = params[:search_string].empty? ? current_user.user_learned_links.paginate(page: page) : search_list.reorder('last_learned_at DESC').reject{|link| link.last_learned_at.nil? }.paginate(page: page)
+      @sorted_links = search_string_is_empty? ? current_user.user_learned_links :
+          search_list.reorder('last_learned_at DESC').reject{|link| link.last_learned_at.nil? }
     when 'Learn Count'
-      @sorted_links = params[:search_string].empty? ? @current_user_links.sort_by{ |link| link.learn_time.count }.reverse.paginate(page: page) : search_list.reorder('learn_times_count DESC').paginate(page: page)
+      @sorted_links = search_string_is_empty? ? current_user_links.sort_by{ |link| link.learn_time.count }.reverse :
+          search_list.reorder('learn_times_count DESC')
     end
+    @sorted_links = @sorted_links.paginate(page: page)
   end
-
-
 
   def new
     @link = Link.new
@@ -91,8 +94,8 @@ class LinksController < ApplicationController
   end
 
   def search
-    @search_list = params[:search_string].empty? ? current_user_links.order(created_at: :desc).paginate(page: page) :
-                                                    search_list.paginate(page: page)
+    @search_list = search_string_is_empty? ? current_user_links.order(created_at: :desc) : search_list
+    @search_list = @search_list.paginate(page: page)
   end
 
   def search_list
@@ -127,6 +130,10 @@ class LinksController < ApplicationController
 
     def current_user_links
       current_user.links
+    end
+
+    def search_string_is_empty?
+      params[:search_string].empty?
     end
 
   def to_csv(user, options= {})
