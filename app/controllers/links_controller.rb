@@ -105,8 +105,11 @@ class LinksController < ApplicationController
   def final_sender
     @id_arr = eval(params['links'])[:value]
     @links = Link.find(@id_arr)
-    @contact_emails = Contact.find(params[:contact_ids]).map{|c|c.email}
-    LinkMailer.share_by_email(@links, @contact_emails, 'hi this is my subject').deliver
+    @contact_emails, @groups_contacts_emails = [], []
+    @contact_emails = Contact.find(params[:contact_ids]).map{|c|c.email} unless params[:contact_ids].nil?
+    @groups_contacts_emails = Group.find(params[:group_ids]).map{|gr|gr.contacts.pluck(:email)} unless params[:group_ids].nil?
+    @email_list = @contact_emails.concat(@groups_contacts_emails)
+    LinkMailer.share_by_email(@links, @email_list, 'hi this is my subject').deliver
     redirect_to links_path
   end
   private

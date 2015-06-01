@@ -20,7 +20,7 @@
   <ul>
     <% groups.each do |group| %>
       <li>
-        <%= check_box_tag 'group_ids[]', group.id,false%>
+        <%= check_box_tag "group_#{group.id}", group.id, false, class: 'group_cb'%>
         <%= h group.name %>
       </li>
     <% end %>
@@ -58,6 +58,22 @@
     }else{
       $('.sender').fadeOut( "slow");
     }
+  });
+  var group_res_arr = [];
+  $('.group_cb:checkbox').click(function() {
+    var $this = $(this);
+    if ($this.is(':checked')) {
+      group_res_arr.push($this.val());
+    } else {
+      group_res_arr.pop($this.val());
+    }
+
+    if(group_res_arr.length > 0){
+      $('.sender').fadeIn( "slow");
+    }else{
+      $('.sender').fadeOut( "slow");
+    }
+    alert(group_res_arr);
   });
 
 </script>

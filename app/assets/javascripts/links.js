@@ -1,5 +1,6 @@
 $(document).ready(function() {
-  var res_arr = [];
+    var res_arr = [];
+    var group_res_arr = [];
   $('.my_modal').click(function () {
     $("#myModal").modal('show');
   });
@@ -8,7 +9,7 @@ $(document).ready(function() {
     $.ajax({
         type: "POST",
         url: "links/final_sender",
-        data: {contact_ids: res_arr, links: $('#selected_links').val()}
+        data: {contact_ids: res_arr, group_ids: group_res_arr, links: $('#selected_links').val()}
         } ).done(function(){
         $("#myModal").modal('hide');
         })
@@ -79,6 +80,21 @@ $(document).ready(function() {
             $('.sender').fadeOut( "slow");
         }
         return res_arr;
+    });
+    $('.group_cb:checkbox').click(function() {
+        var $this = $(this);
+        if ($this.is(':checked')) {
+            group_res_arr.push($this.val());
+        } else {
+            group_res_arr.pop($this.val());
+        }
+
+        if (group_res_arr.length > 0) {
+            $('.sender').fadeIn("slow");
+        } else {
+            $('.sender').fadeOut("slow");
+        }
+        return group_res_arr;
     });
 });
 
