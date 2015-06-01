@@ -1,9 +1,0 @@
-<h4>Select By Group</h4>
-<ul>
-  <% groups.each do |group| %>
-    <li>
-      <%= check_box_tag 'group_ids[]', group.id,false%>
-      <%= h group.name %>
-    </li>
-  <% end %>
-</ul>

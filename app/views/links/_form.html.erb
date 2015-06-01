@@ -28,7 +28,12 @@
   <div class="form-group">
     <%= f.label :Tags, class: "col-sm-1 col-sm-1 control-label" %>
     <div class="col-sm-11">
-      <%= f.select :tag_list, options_for_select(@tags.map(&:name), selected: @link.tags),{},multiple: true, prompt: false, id: 'form-field-select-4', class: 'chzn-drop instructor-chosen-select chosen-select form-control', data: { placeholder: '' } %>
+      <%= f.select :tag_list, options_for_select(@tags.map(&:name),
+                   selected: @link.tags),{},
+                   multiple: true, prompt: false, id: 'form-field-select-4',
+                   class: 'chzn-drop instructor-chosen-select chosen-select form-control',
+                   data: { placeholder: '' }
+      %>
     </div>
   </div>
 
@@ -38,11 +43,14 @@
       <span class="mandatory">*</span>
     <% end %>
     <div class="col-sm-5">
-      <%= f.select :link_type_id, options_from_collection_for_select(@link_types, 'id', 'name', @link.link_type_id), {}, { class: 'form-control'} %>
+      <%= f.select :link_type_id, options_from_collection_for_select(@link_types, 'id', 'name', @link.link_type_id), {},
+                   { class: 'form-control'} %>
     </div>
     <%= f.label :Category, class:"col-sm-1 col-sm-1 control-label" %>
     <div class="col-sm-5">
-      <%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name', @link.category_id), {prompt: 'Select Category'},{ class: 'form-control'} %>
+      <%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name', @link.category_id),
+                   {prompt: 'Select Category'},
+                   { class: 'form-control'} %>
     </div>
   </div>
   <div class="form-group">

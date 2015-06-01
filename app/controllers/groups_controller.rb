@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_filter :user_group, only: [:show, :update, :edit, :destroy]
+  
   def index
     @groups = current_user.groups
     @group = Group.new
@@ -20,13 +22,11 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find_by_id(params[:id])
     @contacts = @group.contacts
     @all_contacts = current_user.contacts - @contacts
   end
 
   def destroy
-    @group = Group.find(params[:id])
     if @group.destroy
       flash[:success] = ["Contact Removed Successfully"]
       redirect_to groups_path
@@ -34,14 +34,12 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find_by_id(params[:id])
     respond_to do |format|
       format.js
     end
   end
 
   def update
-    @group = Group.find_by_id(params[:id])
     if @group.present?
       @group.update(group_params.merge({user_id: current_user.id}))
       flash[:success] = 'Successfully Updated!!'
@@ -69,6 +67,9 @@ class GroupsController < ApplicationController
   end
 
   private
+    def user_group
+      @group = Group.find_by_id(params[:id])
+    end
 
     def group_params
       params.require(:group).permit(:name)

@@ -75,7 +75,7 @@ class LinksController < ApplicationController
   end
 
   def list_selected
-    @id_arr = params['link_ids'].map(&:to_i)
+    @id_arr = params[:link_ids].map(&:to_i)
     @selected_links = Link.find(@id_arr)
     @contacts = current_user.contacts
     @groups = current_user.groups
@@ -85,9 +85,9 @@ class LinksController < ApplicationController
   end
 
   def remove_selected
-    id_arr = params['links']
+    id_arr = params[:link_ids]
     Link.destroy(id_arr)
-    flash[:success] =  "Links Removed."
+    flash[:success] = "Links Removed."
     respond_to do |format|
       format.js { redirect_to links_path }
     end

@@ -1,8 +1,8 @@
 <%= javascript_include_tag 'links' %>
 <section class="wrapper">
-  <%= button_tag "Send", class:'my_modal btn btn-primary'%>
+  <%= button_tag "Send", class:'selection_modal btn btn-primary'%>
   <div class="spacer20"></div>
-  <div id="myModal" class="modal fade">
+  <div id="list_modal" class="modal fade">
     <div class="modal-dialog">
       <%= hidden_field_tag :selected_links, :value => id_arr %>
       <div class="modal-content">
