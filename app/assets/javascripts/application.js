@@ -20,7 +20,6 @@
 //= require chosen.proto
 //= require chosen.jquery
 //= require_tree .
-//= require links
 
 
 $(document).ready(function() {

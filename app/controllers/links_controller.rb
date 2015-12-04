@@ -82,14 +82,18 @@ class LinksController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
 
   def search
     @search_list = params[:search_string].empty? ? current_user_links.order(:created_at => :desc).paginate(page: page) : Link.search(params[:search_string]).paginate(page: page)
   end
 
   def remove_selected
-    id_arr = params[:link_ids]
-    Link.destroy(id_arr)
+    id_arr = params[:link_ids].map(&:to_i)
+    id_arr.each do |id|
+      Link.destroy(id)
+    end
+
     flash[:success] = "Links Removed."
     respond_to do |format|
       format.js { redirect_to links_path }

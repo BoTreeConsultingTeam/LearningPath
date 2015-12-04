@@ -47,7 +47,7 @@ $(document).ready(function() {
 
     $('.dlt_btn').click(function(){
       $.ajax({ type: "POST",
-          url: "links/remove_selected",
+          url: "/links/remove_selected",
           data: {link_ids: res_arr}
         })
     });

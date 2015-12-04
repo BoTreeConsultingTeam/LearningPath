@@ -50,6 +50,6 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
   end
   def contact_params
-    params.require(:contact).permit(:name, :email)
+    params.require(:contact).permit(:name)
   end
 end
