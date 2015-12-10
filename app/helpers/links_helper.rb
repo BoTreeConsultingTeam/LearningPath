@@ -6,7 +6,14 @@ module LinksHelper
   end
 
   def set_category_icon(link)
-    category = link.link_type.name
+    if link.blank?
+      category = link.link_type.name
+    else
+      category = 'No link'
+    end
+
+
+    # category = link.link_type.name
     case category
       when 'Video'
         "fa fa-video-camera"
@@ -20,7 +27,8 @@ module LinksHelper
         "fa fa-arrow-circle-up"
       when 'Email Course'
         "fa fa-envelope"
-      else
+      when 'No link'
+
         "fa fa-file-text"
     end
   end
