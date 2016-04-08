@@ -15,6 +15,10 @@ class LinksController < ApplicationController
       @links = Link.all.sort_by{|link| link.learn_time.count}.paginate(page: page)
     elsif params[:sort_by_desc] == 'learn_count_desc'
       @links = Link.all.sort_by{|link| link.learn_time.count}.reverse.paginate(page: page)
+    elsif params[:order] == 'title_asending'
+      @links = Link.order(:title).paginate(page: page)
+    elsif params[:order_by_desc] == 'title_desending'
+      @links = Link.order(:title).reverse.paginate(page: page)
     else
       @links = current_user_links.order(:created_at => :desc).paginate(page: page)
     end

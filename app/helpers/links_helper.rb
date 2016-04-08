@@ -59,10 +59,18 @@ module LinksHelper
 
   def get_order
     if params[:sort_by_desc] == "learn_count_desc"
-      link_to '<i class="fa fa-sort-amount-asc "></i>'.html_safe, root_path(sort_by: 'learn_count') 
+      link_to '<i class="fa fa-sort-amount-asc ">Learn count</i>'.html_safe, root_path(sort_by: 'learn_count') 
     else
-       link_to '<i class="fa fa-sort-amount-desc "></i>'.html_safe, root_path(sort_by_desc: 'learn_count_desc')
+       link_to '<i class="fa fa-sort-amount-desc ">Learn count</i>'.html_safe, root_path(sort_by_desc: 'learn_count_desc')
     end
+  end
+
+  def get_title
+     if params[:order_by_desc] == 'title_desending'
+       link_to '<i class="fa fa-sort-amount-asc ">Title sort</i>'.html_safe, root_path(order: 'title_asending')
+     else
+        link_to '<i class="fa fa-sort-amount-desc ">Title sort</i>'.html_safe, root_path(order_by_desc: 'title_desending')
+     end
   end
 
 end
