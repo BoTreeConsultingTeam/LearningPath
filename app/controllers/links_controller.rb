@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class LinksController < ApplicationController
   before_filter :authenticate_user!
   before_filter :assign_link, only: [:update, :destroy, :edit]
@@ -10,6 +11,10 @@ class LinksController < ApplicationController
     selected_tag = params[:tag]
     if selected_tag
       @links = current_user_links.tagged_with(selected_tag).order(:created_at => :desc).paginate(page: page)
+    elsif params[:sort_by] == 'learn_count'
+      @links = Link.all.sort_by{|link| link.learn_time.count}.paginate(page: page)
+    elsif params[:sort_by_desc] == 'learn_count_desc'
+      @links = Link.all.sort_by{|link| link.learn_time.count}.reverse.paginate(page: page)
     else
       @links = current_user_links.order(:created_at => :desc).paginate(page: page)
     end

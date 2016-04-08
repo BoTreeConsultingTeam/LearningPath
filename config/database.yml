@@ -3,7 +3,7 @@ postgre_common_config: &postgre_common_config
   encoding: unicode
   pool: 5
   username: postgres # if using default PostgreSQL user then the value should be: postgres
-  password: root
+  password: postgres
   host: localhost # If the DB is setup on local machine then use: localhost
 
 development:

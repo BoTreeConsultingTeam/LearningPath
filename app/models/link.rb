@@ -44,4 +44,6 @@ class Link < ActiveRecord::Base
       current_user.tag(@link, :with => hash['tag_list'], :on => :tags)
     end
   end
+
+  
 end

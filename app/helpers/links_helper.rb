@@ -56,4 +56,13 @@ module LinksHelper
   def favourite_action_tooltip(link)
     "#{link.favourite? ? 'Unmark ' : 'Mark'} as Favourite"
   end
+
+  def get_order
+    if params[:sort_by_desc] == "learn_count_desc"
+      link_to '<i class="fa fa-sort-amount-asc "></i>'.html_safe, root_path(sort_by: 'learn_count') 
+    else
+       link_to '<i class="fa fa-sort-amount-desc "></i>'.html_safe, root_path(sort_by_desc: 'learn_count_desc')
+    end
+  end
+
 end

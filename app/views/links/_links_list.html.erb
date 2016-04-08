@@ -3,6 +3,7 @@
     <div class="left"><i title= "<%= link.link_type.name %>" class='<%= "#{set_category_icon(link)}" %>'></i><br/>
       <span id="learn_count_<%=link.id %>">
         <%= render :partial => 'learn_count', :locals => {link: link} %>
+        
       </span><br>
       <i id="fav_<%=link.id %>">
         <%= render :partial => 'favourite_btn', :locals => {link: link} %>
