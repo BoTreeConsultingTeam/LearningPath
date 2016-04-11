@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526085913) do
+ActiveRecord::Schema.define(version: 20160408105313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(version: 20150526085913) do
     t.string   "icon"
   end
 
+  create_table "contact_groups", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "contact_id"
+    t.integer  "group_id"
+  end
+
+  add_index "contact_groups", ["contact_id"], name: "index_contact_groups_on_contact_id", using: :btree
+  add_index "contact_groups", ["group_id"], name: "index_contact_groups_on_group_id", using: :btree
+
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "email_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "group_id"
+  end
+
+  add_index "contacts", ["group_id"], name: "index_contacts_on_group_id", using: :btree
+
   create_table "favourites", force: true do |t|
     t.integer  "user_id"
     t.integer  "link_id"
@@ -31,6 +51,15 @@ ActiveRecord::Schema.define(version: 20150526085913) do
   end
 
   add_index "favourites", ["user_id", "link_id"], name: "favourites_index", unique: true, using: :btree
+
+  create_table "groups", force: true do |t|
+    t.string   "group_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "contact_id"
+  end
+
+  add_index "groups", ["contact_id"], name: "index_groups_on_contact_id", using: :btree
 
   create_table "learn_times", force: true do |t|
     t.datetime "created_at"
@@ -108,9 +137,13 @@ ActiveRecord::Schema.define(version: 20150526085913) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "group_id"
+    t.integer  "contact_id"
   end
 
+  add_index "users", ["contact_id"], name: "index_users_on_contact_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
