@@ -13,12 +13,16 @@ class LinksController < ApplicationController
       @links = current_user_links.tagged_with(selected_tag).order(:created_at => :desc).paginate(page: page)
     elsif params[:sort_by] == 'learn_count'
       @links = Link.all.sort_by{|link| link.learn_time.count}.paginate(page: page)
-    elsif params[:sort_by_desc] == 'learn_count_desc'
+    elsif params[:sort_by] == 'learn_count_desc'
       @links = Link.all.sort_by{|link| link.learn_time.count}.reverse.paginate(page: page)
-    elsif params[:order] == 'title_asending'
+    elsif params[:sort_by] == 'title_asending'
       @links = Link.order(:title).paginate(page: page)
-    elsif params[:order_by_desc] == 'title_desending'
+    elsif params[:sort_by] == 'title_desending'
       @links = Link.order(:title).reverse.paginate(page: page)
+    elsif params[:sort_by] == "created link"
+      @links = Link.order(:created_at => :desc).paginate(page: page)
+    elsif params[:sort_by] == "updated link"
+      @links = Link.order(:updated_at => :desc).paginate(page: page)
     else
       @links = current_user_links.order(:created_at => :desc).paginate(page: page)
     end
@@ -55,6 +59,7 @@ class LinksController < ApplicationController
       current_user.tag(@link, :with => link_params[:tag_list], :on => :tags)
       flash[:success] = 'Successfully Updated!!'
       redirect_to root_path
+       
     else
       flash.now[:danger] = @link.errors.full_messages
       render 'edit'

@@ -1,6 +1,9 @@
 <section class="wrapper">
   <br><%= get_order %> &nbsp;
     <%= get_title %>
+    <%= get_create_link %>
+    <%= get_update_link %>
+    
   <div class="row mt">
     <% if @links.blank? %>
       <div class="no_links_msg">You do not have anything to display at this time. <%= link_to 'Start saving one now!', new_link_path%></div>

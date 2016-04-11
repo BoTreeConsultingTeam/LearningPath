@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :favourites
   has_many :links
   has_many :learn_time
+  has_many :groups
+  has_many :contacts
 
   def self.get_all_link(user, date)
     user.links.where("created_at >= ?", date).group('date(created_at)').count

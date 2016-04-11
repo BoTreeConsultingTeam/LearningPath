@@ -58,19 +58,26 @@ module LinksHelper
   end
 
   def get_order
-    if params[:sort_by_desc] == "learn_count_desc"
+    if params[:sort_by] == "learn_count_desc"
       link_to '<i class="fa fa-sort-amount-asc ">Learn count</i>'.html_safe, root_path(sort_by: 'learn_count') 
     else
-       link_to '<i class="fa fa-sort-amount-desc ">Learn count</i>'.html_safe, root_path(sort_by_desc: 'learn_count_desc')
+       link_to '<i class="fa fa-sort-amount-desc ">Learn count</i>'.html_safe, root_path(sort_by: 'learn_count_desc')
     end
   end
 
   def get_title
-     if params[:order_by_desc] == 'title_desending'
-       link_to '<i class="fa fa-sort-amount-asc ">Title sort</i>'.html_safe, root_path(order: 'title_asending')
+     if params[:sort_by] == 'title_desending'
+       link_to '<i class="fa fa-sort-amount-asc ">Title sort</i>'.html_safe, root_path(sort_by: 'title_asending')
      else
-        link_to '<i class="fa fa-sort-amount-desc ">Title sort</i>'.html_safe, root_path(order_by_desc: 'title_desending')
+        link_to '<i class="fa fa-sort-amount-desc ">Title sort</i>'.html_safe, root_path(sort_by: 'title_desending')
      end
   end
 
+  def get_create_link
+    link_to '<i class="fa fa-sort-amount-asc ">On link created</i>'.html_safe, root_path(sort_by: 'created link')
+  end
+
+  def get_update_link
+    link_to '<i class="fa fa-sort-amount-asc ">On link updated</i>'.html_safe, root_path(sort_by: 'updated link')
+  end
 end
