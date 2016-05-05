@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+gem 'pg' 
 gem 'pg_search'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'acts-as-taggable-on'
@@ -12,6 +12,8 @@ gem 'google_visualr'
 gem 'will_paginate'
 gem 'pry'
 gem 'nav_lynx'
+gem 'bootstrap-datepicker-rails'
+gem  'tzinfo' 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -35,7 +37,7 @@ gem 'spring',        group: :development
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 
 # Use unicorn as the app server
 # gem 'unicorn'

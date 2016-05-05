@@ -8,7 +8,12 @@ class LinksController < ApplicationController
   before_filter :all_link_types, only: [ :edit, :new, :update ]
 
   def index
+
     selected_tag = params[:tag]
+    starting_date = params[:start]
+     puts "................................................#{starting_date}"
+    ending_date = params[:end]
+    
     if selected_tag
       @links = current_user_links.tagged_with(selected_tag).order(:created_at => :desc).paginate(page: page)
     elsif params[:sort_by] == 'learn_count'
@@ -23,8 +28,10 @@ class LinksController < ApplicationController
       @links = Link.order(:created_at => :desc).paginate(page: page)
     elsif params[:sort_by] == "updated link"
       @links = Link.order(:updated_at => :desc).paginate(page: page)
+    
+      
     else
-      @links = current_user_links.order(:created_at => :desc).paginate(page: page)
+      @links = current_user_links.where("DATE(created_at) BETWEEN ? AND ?", starting_date, ending_date).order(:created_at => :desc).paginate(page: page)
     end
     respond_to do |format|
       format.html
@@ -32,6 +39,7 @@ class LinksController < ApplicationController
       format.csv { send_data to_csv(current_user) }
     end
   end
+
 
   def new
     @link = Link.new
@@ -49,6 +57,8 @@ class LinksController < ApplicationController
       redirect_to new_link_path
     end
   end
+
+
 
   def edit
   end
@@ -122,18 +132,18 @@ class LinksController < ApplicationController
       current_user.links
     end
 
-  def to_csv(user, options= {})
-    column_names = Link.column_names
-    column_names << 'tag_list' unless column_names.include? 'tag_list'
-    column_names.delete_at(0) if column_names[0] == 'id'
-    CSV.generate(options) do |csv|
-      csv << column_names
-      user.links.each do |link|
-        arr = link.attributes.except!('id').values_at(*column_names)
-        arr[-1] = link.tags.join(', ')
-        csv << arr
+    def to_csv(user, options= {})
+      column_names = Link.column_names
+      column_names << 'tag_list' unless column_names.include? 'tag_list'
+      column_names.delete_at(0) if column_names[0] == 'id'
+      CSV.generate(options) do |csv|
+        csv << column_names
+        user.links.each do |link|
+          arr = link.attributes.except!('id').values_at(*column_names)
+          arr[-1] = link.tags.join(', ')
+          csv << arr
+        end
       end
     end
-  end
 end
 

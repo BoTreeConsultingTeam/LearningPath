@@ -2,9 +2,9 @@ postgre_common_config: &postgre_common_config
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: postgres # if using default PostgreSQL user then the value should be: postgres
+  username: postgres 
   password: postgres
-  host: localhost # If the DB is setup on local machine then use: localhost
+  host: localhost 
 
 development:
   database: learningpath_development
@@ -20,3 +20,4 @@ test:
 production:
   database: learningpath_production
   <<: *postgre_common_config
+

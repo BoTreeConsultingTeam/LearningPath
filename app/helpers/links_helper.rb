@@ -80,4 +80,5 @@ module LinksHelper
   def get_update_link
     link_to '<i class="fa fa-sort-amount-asc ">On link updated</i>'.html_safe, root_path(sort_by: 'updated link')
   end
+
 end
